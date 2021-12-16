@@ -1,6 +1,6 @@
 # Projeto Solutinhos
 
-## Rodar projeto local (windowns)
+## Rodar projeto local (Windows)
 
 npm i @vue/cli-service
 
