@@ -6,7 +6,7 @@
 
 <script>
 
-import NavBar from './components/reusable/NavBar.vue'
+import NavBar from './components/shared/NavBar.vue'
 
 export default {
   name: 'App',
@@ -17,5 +17,8 @@ export default {
 </script>
 
 <style>
-  
+  * {
+    margin: 0;
+    padding: 0;
+  }
 </style>
