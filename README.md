@@ -15,3 +15,12 @@ npm run lint
 
 ### Editar configurações:
 Veja em: [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## CSS do PROJETO:
+
+Paleta de cores:
+
+#2BF14D
+#107266
+#FFFFFF
