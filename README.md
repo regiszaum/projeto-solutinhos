@@ -1,24 +1,17 @@
-# projeto
+# Projeto Solutinhos
 
-## Project setup
-```
+## Rodar projeto local (windowns)
+
+npm i @vue/cli-service
+
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
+## Rodar projeto local (Em produção)
 npm run build
-```
 
-### Lints and fixes files
-```
+## Rodar lint
 npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Editar configurações:
+Veja em: [Configuration Reference](https://cli.vuejs.org/config/).
