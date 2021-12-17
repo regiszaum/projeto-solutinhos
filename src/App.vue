@@ -2,7 +2,7 @@
   <router-view/>
 </template>
 
-<script>    
+<script>
 
 export default {
   name: 'App',

@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from'../components/screens/TelaLogin.vue'
+import Login from '../components/screens/TelaLogin.vue'
 
 const routes = [
     {
