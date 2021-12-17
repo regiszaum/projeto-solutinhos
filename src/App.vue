@@ -1,17 +1,18 @@
 <template>
-  <div>
     <NavBar/>
-  </div>
+    <TelaEditarUsuario/>
 </template>
 
 <script>
 
 import NavBar from './components/shared/NavBar.vue'
+import TelaEditarUsuario from './components/screens/TelaEditarUsuario.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar
+    NavBar,
+    TelaEditarUsuario
   }
 }
 </script>

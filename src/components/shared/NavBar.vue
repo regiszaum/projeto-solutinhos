@@ -96,7 +96,7 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 400px;
+    width: 450px;
     height: 37px;
 
     border-radius: 10px;
