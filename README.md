@@ -24,3 +24,7 @@ Paleta de cores:
 #2BF14D
 #107266
 #FFFFFF
+
+Font:
+
+Franklin Gothic Medium
