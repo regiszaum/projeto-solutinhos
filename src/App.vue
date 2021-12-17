@@ -1,18 +1,12 @@
 <template>
-    <NavBar/>
-    <TelaEditarUsuario/>
+  <router-view/>
 </template>
 
-<script>
-
-import NavBar from './components/shared/NavBar.vue'
-import TelaEditarUsuario from './components/screens/TelaEditarUsuario.vue'
+<script>    
 
 export default {
   name: 'App',
   components: {
-    NavBar,
-    TelaEditarUsuario
   }
 }
 </script>
