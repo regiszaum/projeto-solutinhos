@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/screens/TelaLogin.vue'
+import TelaEditarUsuario from '../components/screens/TelaEditarUsuario.vue'
 
 const routes = [
     {
@@ -7,6 +8,11 @@ const routes = [
       name: 'Index',
       component: Login
     },
+    {
+      path: '/edit',
+      name: 'Edicao',
+      component: TelaEditarUsuario
+    }
   ]
   
   const router = createRouter({
