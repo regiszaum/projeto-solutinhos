@@ -5,8 +5,8 @@
         </div>
         <div class="form-login">
             <h1>Login</h1>
-            <input type="text" name="username" v-model="input.username" placeholder="Username" />
-            <input type="password" name="password" v-model="input.password" placeholder="Password" />
+            <input type="text" name="username" placeholder="Username" />
+            <input type="password" name="password" placeholder="Password" />
             <button type="button">Login</button>
         </div>
     </div>
@@ -14,10 +14,8 @@
 
 <script>
 export default {
-    name: 'TelaLogin',
-    components: {
-        TelaLogin
-    }
+    name: 'Login',
+
 }
 </script>
 
