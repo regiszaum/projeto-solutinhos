@@ -4,7 +4,7 @@
             <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe" id="img-login">
         </div>
         <div class="container">
-            <img src="../../assets/images/logo.png" alt="soluti-logo" id="soluti-login">
+            <img src="../../assets/images/soluti-logo-verde-escuro.png" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
@@ -13,7 +13,7 @@
                 <input type="password" name="password" placeholder="Digite sua senha" />
             </div>
                 <button type="submit">Login</button>
-                <div class="checkbox-row">
+            <div class="checkbox-row">
                 <label><input type="checkbox" checked="checked" name="lembrar" />Lembrar</label>
                 <span class="password"><a href="#"> Esqueceu a senha?</a></span>
             </div>
@@ -36,7 +36,7 @@ export default {
 }
 
 #posicao {
-    display: grid; 
+  display: grid; 
   grid-template-columns: 0.8fr 0.3fr 0fr; 
   grid-template-rows: 1fr 1fr 0fr; 
   gap: 0px 0px; 
@@ -57,18 +57,14 @@ input[type=text], input[type=password] {
     }
 
 #soluti-login {
-    margin-left: 25%;
+    width: 30%;
+    margin-left: 36%;
 }
 
 h1 {
     text-align: center;
     font-size: 18px;
-}
-
-
-span.password {
-    padding-top: 0;
-
+    padding: 10%;
 }
 
 span.password a{ 
@@ -103,8 +99,8 @@ button:hover {
     grid-area: container;
     padding: 16px;
     color: #2BF14D;
-    border: 5px solid #107266;
-    background-color: #107266;
+    border: 5px solid #13564F;
+    background-color: #13564F;
     /* border-radius: 25px; */
 }
 </style>
