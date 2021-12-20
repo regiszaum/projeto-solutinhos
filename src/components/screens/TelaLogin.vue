@@ -36,7 +36,14 @@ export default {
 }
 
 #posicao {
-    display: inline-block;
+    display: grid; 
+  grid-template-columns: 0.8fr 0.3fr 0fr; 
+  grid-template-rows: 1fr 1fr 0fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "img-login container ."
+    "img-login container ."
+    ". . ."; 
 }
 
 input[type=text], input[type=password] {
@@ -50,7 +57,7 @@ input[type=text], input[type=password] {
     }
 
 #soluti-login {
-    margin-left: 32%;
+    margin-left: 25%;
 }
 
 h1 {
@@ -60,7 +67,6 @@ h1 {
 
 
 span.password {
-    float: right;
     padding-top: 0;
 
 }
@@ -85,16 +91,16 @@ button:hover {
 }
 
 #div-img-login {
-    float: left
+    grid-area: img-login; 
 }
 
 #img-login {
-    width: 1100px;
-    height: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .container {
-    float: right;
+    grid-area: container;
     padding: 16px;
     color: #2BF14D;
     border: 5px solid #107266;
