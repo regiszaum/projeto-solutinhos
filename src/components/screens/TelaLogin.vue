@@ -49,7 +49,7 @@ export default {
 input[type=text], input[type=password] {
     border-radius: 15px;
     width: 100%;
-    padding: 16px 16px;
+    padding: 8px 8px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -69,6 +69,7 @@ h1 {
 
 span.password a{ 
     color: #2BF14D !important;
+    float: right;
 }
 
 button {
@@ -76,10 +77,12 @@ button {
     background-color: #2BF14D;
     color: #fff;
     padding: 14px 0;
-    margin: 10px 0;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    margin-left: 25%;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 button:hover {
