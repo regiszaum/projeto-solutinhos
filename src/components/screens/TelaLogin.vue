@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <img src="../../assets/images/logo.png" alt="soluti-logo" id="soluti-login">
-            <h1>Login</h1>
+            <h1>Login</h1>  
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
                 <input type="text" name="username" placeholder="Digite seu email"/>
