@@ -4,7 +4,7 @@
             <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe" id="img-login">
         </div>
         <div class="container">
-            <img src="../../assets/images/logo.png" alt="soluti-logo" id="soluti-login">
+            <img src="../../assets/images/logo.svg" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>  
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
