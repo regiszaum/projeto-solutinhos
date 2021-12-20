@@ -1,17 +1,18 @@
 <template>
   <div class="nav-bar">
     <div class="item_1">
-      <div class="nav-bar-home-button">
-        <img  id="home_icon" src="../../assets/icons/home_logo.svg" alt="">
-
-        <hr id="hover-line">
-      </div>
-       
+      <router-link to="/">
+        <div class="nav-bar-home-button">
+          <img  id="home_icon" src="../../assets/icons/home_logo.svg" alt="">
+          <hr id="hover-line">
+        </div>
+      </router-link>
     </div>
 
     <div class="item_2">
-      <div class="nav-bar-search-bar">
-        <img id="soluti_logo" src="../../assets/images/logo.png" alt="soluti_logo">
+      <div class="nav-bar-search-bar-wrapper">
+        <input placeholder="Procurar na Plataforma" type="text" class="nav-bar-search-bar">
+        <img id="soluti_logo" src="../../assets/images/logo.png" alt="logo">
         <img id="search_icon" src="../../assets/icons/search_icon.svg" alt="search_icon">
       </div>
     </div>
@@ -27,10 +28,28 @@
 </template>
 
 <script>
+export default{
 
+}
 </script>
 
 <style scoped>
+  @media screen and (max-width: 1000px){
+    .item_2 .nav-bar-search-bar-wrapper{
+      display: none;
+    }
+  }
+
+  * {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  input:focus::placeholder {
+    color: transparent;
+  }
+
   .nav-bar {
     position: fixed;
 
@@ -47,6 +66,10 @@
     height: 70px;
 
     background-color: var(--verde-escuro);
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    z-index: 2;
   }
 
   .nav-bar > * {
@@ -91,7 +114,11 @@
     display: none;
   }
 
-  .item_2 .nav-bar-search-bar {
+  .item_2 .nav-bar-search-bar-wrapper{
+    position: relative;
+  }
+
+  .item_2 .nav-bar-search-bar-wrapper .nav-bar-search-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -100,17 +127,30 @@
     height: 37px;
 
     border-radius: 10px;
+    border: none;
+
+    box-sizing: border-box;
+    padding: 5px 40px;
 
     background-color: white;
+
+    font-weight: 400;
   }
 
   .item_2 #soluti_logo{
+    position: absolute;
+    top: -7px;
+
     margin-left: -7px;
     width: auto;
     height: 50px;
   }
 
   .item_2 #search_icon{
+    position: absolute;
+    top: 6px;
+    right: 0px;
+
     margin-right: 3px;
   }
 
@@ -144,6 +184,4 @@
   .nav-bar-right-content .nav-bar-right-content_icon{
     margin-left: 20px;
   }
-
-
 </style>

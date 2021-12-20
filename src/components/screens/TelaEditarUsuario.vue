@@ -1,4 +1,5 @@
 <template>
+  <NavBar/>
   <div class="page-wrapper">
     <div class="form-wrapper">
       <form autocomplete="off" action="" class="form">
@@ -17,8 +18,8 @@
           <h3>Nome de usuário</h3>
         </div>
         <div id="item_4" class="box">
-          <input name="name" v-model="name" autocomplete="off" type="text">
-          <input name="username" v-model="username" autocomplete="off"  type="text">
+          <input name="name" v-model="name" autocomplete="off" type="text" placeholder="Digite seu Nome">
+          <input name="username" v-model="username" autocomplete="off"  type="text" placeholder="Digite seu Nome de Usuário">
         </div>
 
         <div id="item_5" class="box">
@@ -27,9 +28,9 @@
           <h3>Repita a senha</h3>
         </div>
         <div id="item_6" class="box">
-          <input type="email">
-          <input type="password" autocomplete="off" >
-          <input type="password" autocomplete="off" >
+          <input name="email" type="email" placeholder="Digite seu e-mail">
+          <input name="senha" type="password" autocomplete="off" placeholder="Digite sua Nova Senha">
+          <input name="rsenha" type="password" autocomplete="off" placeholder="Repita sua Nova Senha">
         </div>
         
         <div id="item_7" class="box">
@@ -42,6 +43,13 @@
 </template>
 
 <script>
+import NavBar from '../shared/NavBar.vue'
+
+export default {
+  components:{
+    NavBar
+  }
+}
   
 </script>
 
@@ -63,6 +71,7 @@
     padding: 8px 6px;
 
     color: black;
+    font-weight: 400;
   }
 
   .page-wrapper{
@@ -74,8 +83,8 @@
   .form-wrapper{
     margin-top: 120px;
 
-    width: 450px;
-    height: 480px;  
+    width: 600px;
+    height: 520px;  
 
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -182,19 +191,16 @@
 
     background-color: var(--verde);
 
-    width: 115px;
+    width: 160px;
     border: none;
     border-radius: 20px;
     box-sizing: border-box;
     padding: 7px 2px;
+
+    cursor: pointer;
   }
 
   .form #item_7 button:hover {
     background-color: var(--verde-hover);
-  }
-  
-  .box{
-    width: 100px;
-    height: 80px;
   }
 </style>
