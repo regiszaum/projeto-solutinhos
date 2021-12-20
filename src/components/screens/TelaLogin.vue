@@ -4,13 +4,8 @@
             <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe" id="img-login">
         </div>
         <div class="container">
-<<<<<<< HEAD
-            <img src="../../assets/images/soluti-logo-verde-escuro.png" alt="soluti-logo" id="soluti-login">
-            <h1>Login</h1>
-=======
             <img src="../../assets/images/logo.png" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>  
->>>>>>> a39d297cb9d8855791f5a5f79c98d1d5b77ff541
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
                 <input type="text" name="username" placeholder="Digite seu email"/>
