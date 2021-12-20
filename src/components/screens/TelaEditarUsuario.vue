@@ -54,13 +54,6 @@ export default {
 </script>
 
 <style scoped>
-  * {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: var(--branco);
-  }
-
   input {
     margin-bottom: 10px;
 

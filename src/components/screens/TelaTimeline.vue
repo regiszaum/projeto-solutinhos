@@ -1,9 +1,9 @@
 <template>
   <div>
     <NavBar/>
-    <ProfileCatalog/>
-
     <div class="content">
+      <ProfileCatalog/>
+
       <div v-for="el in array" :key="el" class="box">
 
       </div>

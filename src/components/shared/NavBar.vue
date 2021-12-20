@@ -12,7 +12,7 @@
     <div class="item_2">
       <div class="nav-bar-search-bar-wrapper">
         <input placeholder="Procurar na Plataforma" type="text" class="nav-bar-search-bar">
-        <img id="soluti_logo" src="../../assets/images/logo.png" alt="logo">
+        <img id="soluti_logo" src="../../assets/images/logo.svg" alt="logo">
         <img id="search_icon" src="../../assets/icons/search_icon.svg" alt="search_icon">
       </div>
     </div>
@@ -40,12 +40,6 @@ export default{
     }
   }
 
-  * {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-  }
-
   input:focus::placeholder {
     color: transparent;
   }
@@ -69,7 +63,7 @@ export default{
 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-    z-index: 2;
+    z-index: 1;
   }
 
   .nav-bar > * {
@@ -132,18 +126,17 @@ export default{
     box-sizing: border-box;
     padding: 5px 40px;
 
-    background-color: white;
-
     font-weight: 400;
+    color: black;
   }
 
   .item_2 #soluti_logo{
     position: absolute;
-    top: -7px;
+    top: 3px;
+    left: 6px;
 
-    margin-left: -7px;
     width: auto;
-    height: 50px;
+    height: 30px;
   }
 
   .item_2 #search_icon{
