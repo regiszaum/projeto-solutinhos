@@ -1,9 +1,10 @@
 <template>
-    <div>
-        <!-- <div class="img-login">
-            <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe">
-        </div> -->
+    <div id="posicao">
+        <div class="img-login" id="div-img-login">
+            <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe" id="img-login">
+        </div>
         <div class="container">
+            <img src="../../assets/images/logo.png" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
@@ -12,7 +13,7 @@
                 <input type="password" name="password" placeholder="Digite sua senha" />
             </div>
                 <button type="submit">Login</button>
-                <div class="container">
+                <div class="checkbox-row">
                 <label><input type="checkbox" checked="checked" name="lembrar" />Lembrar</label>
                 <span class="password"><a href="#"> Esqueceu a senha?</a></span>
             </div>
@@ -26,23 +27,31 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-html, body {
-    display: flex;
+* {
+    /* display: flex; */
     font-size: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#posicao {
+    display: inline-block;
 }
 
 input[type=text], input[type=password] {
     border-radius: 15px;
     width: 100%;
-    padding: 16px 8px;
+    padding: 16px 16px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
     }
+
+#soluti-login {
+    margin-left: 32%;
+}
 
 h1 {
     text-align: center;
@@ -53,17 +62,21 @@ h1 {
 span.password {
     float: right;
     padding-top: 0;
-    color: #2BF14D;
+
+}
+
+span.password a{ 
+    color: #2BF14D !important;
 }
 
 button {
     border-radius: 25px;
     background-color: #2BF14D;
-    color: white;
+    color: #fff;
     padding: 14px 0;
     margin: 10px 0;
     border: none;
-    cursor: grabbing;
+    cursor: pointer;
     width: 100%;
 }
 
@@ -71,14 +84,21 @@ button:hover {
     opacity: 0.8;
 }
 
-.img-login {
-    width: 20px;
+#div-img-login {
+    float: left
+}
+
+#img-login {
+    width: 1100px;
+    height: auto;
 }
 
 .container {
+    float: right;
+    padding: 16px;
     color: #2BF14D;
     border: 5px solid #107266;
     background-color: #107266;
-    border-radius: 25px;
+    /* border-radius: 25px; */
 }
 </style>
