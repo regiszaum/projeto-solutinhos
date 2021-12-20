@@ -13,7 +13,7 @@
                 <input type="password" name="password" placeholder="Digite sua senha" />
             </div>
                 <button type="submit">Login</button>
-                <div class="checkbox-row">
+            <div class="checkbox-row">
                 <label><input type="checkbox" checked="checked" name="lembrar" />Lembrar</label>
                 <span class="password"><a href="#"> Esqueceu a senha?</a></span>
             </div>
@@ -36,7 +36,7 @@ export default {
 }
 
 #posicao {
-    display: grid; 
+  display: grid; 
   grid-template-columns: 0.8fr 0.3fr 0fr; 
   grid-template-rows: 1fr 1fr 0fr; 
   gap: 0px 0px; 
@@ -49,7 +49,7 @@ export default {
 input[type=text], input[type=password] {
     border-radius: 15px;
     width: 100%;
-    padding: 16px 16px;
+    padding: 8px 8px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -57,22 +57,19 @@ input[type=text], input[type=password] {
     }
 
 #soluti-login {
-    margin-left: 25%;
+    width: 30%;
+    margin-left: 36%;
 }
 
 h1 {
     text-align: center;
     font-size: 18px;
-}
-
-
-span.password {
-    padding-top: 0;
-
+    padding: 10%;
 }
 
 span.password a{ 
     color: #2BF14D !important;
+    float: right;
 }
 
 button {
@@ -80,10 +77,12 @@ button {
     background-color: #2BF14D;
     color: #fff;
     padding: 14px 0;
-    margin: 10px 0;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    margin-left: 25%;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 button:hover {
@@ -103,8 +102,8 @@ button:hover {
     grid-area: container;
     padding: 16px;
     color: #2BF14D;
-    border: 5px solid #107266;
-    background-color: #107266;
+    border: 5px solid #13564F;
+    background-color: #13564F;
     /* border-radius: 25px; */
 }
 </style>
