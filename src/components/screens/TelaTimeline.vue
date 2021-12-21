@@ -2,6 +2,7 @@
   <div>
     <NavBar/>
     <ProfileCatalog/>
+    <Contacts/>
     <div class="content">
 
       <div v-for="el in array" :key="el" class="box">
@@ -15,11 +16,13 @@
 
 import ProfileCatalog from '../shared/ProfileCatalog.vue'
 import NavBar from '../shared/NavBar.vue'
+import Contacts from '../shared/Contacts.vue'
 
 export default{
   components: {
     ProfileCatalog,
-    NavBar
+    NavBar,
+    Contacts
   },
   data(){
     return{
@@ -51,6 +54,6 @@ export default{
     width: 450px;
     height: 600px;
 
-    background-color: blue;
+   border: solid 0.5px black;
   }
 </style>

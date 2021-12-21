@@ -1,8 +1,10 @@
 <template>
   <div class="catalog-wrapper"> 
     <div class="catalog-profile-info">
-      <div id="proile-pic-wrapper"></div>
-      <h1>João Mário</h1>
+      <div id="proile-pic-wrapper">
+        <img id="proile-pic" src="../../assets/images_for_tests/Alberto.png" alt="foto">
+      </div>
+      <h1>Alberto</h1>
       <button>Ver Perfil</button>
     </div>
     <div class="catalog-options">
@@ -65,12 +67,21 @@ export default{
     align-self: center;
     justify-self: center;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100px;
     height: 100px;
 
-    background-color: var(--branco);
-
     border-radius: 50px;
+  }
+
+  #proile-pic{
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 135px;
+    height: auto;
   }
 
   .catalog-profile-info h1{
