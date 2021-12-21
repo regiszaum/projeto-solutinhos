@@ -23,8 +23,8 @@
 
     margin: 10px;
 
-    width: 120px;
-    height: 100px;
+    width: 100px;
+    height: 85px;
 
     border-radius: 20px;
 

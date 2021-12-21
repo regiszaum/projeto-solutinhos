@@ -2,7 +2,7 @@
   <div class="catalog-wrapper"> 
     <div class="catalog-profile-info">
       <div id="proile-pic-wrapper"></div>
-      <h1>Nome do Usuário</h1>
+      <h1>João Mário</h1>
       <button>Ver Perfil</button>
     </div>
     <div class="catalog-options">
@@ -32,9 +32,7 @@ export default{
 <style scoped>
 
  .catalog-wrapper{
-   position: absolute;
-   top: -100px;
-   right: 550px;
+   position: fixed;
 
    display: flex;
    flex-direction: column;
@@ -50,13 +48,23 @@ export default{
   .catalog-profile-info{
     margin-top: 100px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 380px;
+
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 60% 40%;
+    grid-template-areas: 
+      "a b"
+      "a c"
+    ;
   }
 
   #proile-pic-wrapper{
+    grid-area: a;
+
+    align-self: center;
+    justify-self: center;
+
     width: 100px;
     height: 100px;
 
@@ -66,13 +74,20 @@ export default{
   }
 
   .catalog-profile-info h1{
-    margin-top: 20px;
+    grid-area: b;
+
+    height: auto;
+
+    align-self: center;
 
     font-size: 25px;
   }
 
   .catalog-profile-info button {
-    margin-top: 20px;
+    grid-area: c;
+
+    align-self: center;
+    justify-self: flex-start;
     
     background-color: var(--verde);
 
