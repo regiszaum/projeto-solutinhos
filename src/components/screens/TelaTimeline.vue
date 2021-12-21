@@ -16,7 +16,7 @@
 
 import ProfileCatalog from '../shared/ProfileCatalog.vue'
 import NavBar from '../shared/NavBar.vue'
-import Contacts from '../shared/Contacts.vue'
+import Contacts from '../shared/ContactsField.vue'
 
 export default{
   components: {
