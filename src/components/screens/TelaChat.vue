@@ -14,7 +14,7 @@
         <Contact :url="'Kim.png'" :name="'Kim'" :online_sts="'offline'"/>
         </div>
 
-        <div class="chat"></div>
+        <div class="chat">123</div>
 
         <div class="user-perfil">
             <h1>User</h1>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
  h1 {
      padding: 2%;
      font-size: 30px;
@@ -71,11 +71,12 @@ export default {
   }
 
   .chat {
-      height: 100%;
       width: 56%;
-      background-color: var(--verde-escuro);
+      background-color: black;
       display: flex;
       flex-direction: column;
+      position: center;
+
   }
 
 </style>
