@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <NavBar/>
+    <div class="tela">
+        <!-- <NavBar/> -->
 
         <div class="conversas">
             <h1>Conversas</h1>
@@ -14,7 +14,9 @@
         <Contact :url="'Kim.png'" :name="'Kim'" :online_sts="'offline'"/>
         </div>
 
-        <div class="chat">123</div>
+        <div class="chat">
+            <h1>Chat</h1>
+        </div>
 
         <div class="user-perfil">
             <h1>User</h1>
@@ -43,6 +45,10 @@ export default {
      font-size: 30px;
  }
 
+.tela {
+    display: flex;
+}
+
  .conversas{
      
    position: fixed;
@@ -50,12 +56,11 @@ export default {
    flex-direction: column;
    align-items: center;
    justify-content: flex-start;
-   width: 22%; 
+   width: 22%;
    /* height: 100%; */
    background: var(--verde-escuro);
    margin-top: 4.5%;
    padding-top: 0.1%;
-   /* padding-left: 1%; */
    border-right: 5px solid var(--verde-escuro);
    overflow-x: hidden;
    overflow-y: scroll;
@@ -71,12 +76,21 @@ export default {
   }
 
   .chat {
-      width: 56%;
-      background-color: black;
-      display: flex;
-      flex-direction: column;
-      position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    background-color: black;
+    width: 56%;
+    /* height: 750px; */
 
   }
 
+  .user-perfil {
+      width: 22%;
+      height: 100%;
+      background-color: blue;
+
+  }
 </style>
