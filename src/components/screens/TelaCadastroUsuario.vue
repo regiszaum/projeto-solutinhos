@@ -135,6 +135,10 @@ export default{
 
     border-radius: 20px;
     border: none;
+
+    box-sizing: border-box;
+    padding: 8px 6px;
+    color: black;
   }
   
   #item7{
