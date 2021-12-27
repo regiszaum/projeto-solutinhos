@@ -39,8 +39,12 @@ export default {
     methods:{
         loginDoUsuario(){
             http.post('login',this.usuario)
-                .then(res => console.log(res))
-                .catch(err => console.log(err))
+                .then(res => {
+                    window.alert("Bem vindo(a) " + res.data.user.nome)
+                })
+                .catch(err => {
+                    window.alert("O usuário informado não está cadastrado")
+                })
         }
     }
 }
