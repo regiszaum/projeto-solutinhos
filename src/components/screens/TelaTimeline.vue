@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar/>
     <ProfileCatalog/>
     <Contacts/>
     <div class="content">
@@ -21,12 +20,11 @@ import Contacts from '../shared/ContactsField.vue'
 export default{
   components: {
     ProfileCatalog,
-    NavBar,
     Contacts
   },
   data(){
     return{
-      array: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+      array: [1,2,3,4,5,6,7,8,9,10]
     }
   }
 }

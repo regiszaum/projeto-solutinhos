@@ -1,5 +1,4 @@
 <template>
-  <NavBar/>
   <div class="page-wrapper">
     <div class="form-wrapper">
       <form autocomplete="off" action="" class="form">
@@ -18,8 +17,8 @@
           <h3>Nome de usuário</h3>
         </div>
         <div id="item_4" class="box">
-          <input name="name" v-model="name" autocomplete="off" type="text" placeholder="Digite seu Nome">
-          <input name="username" v-model="username" autocomplete="off"  type="text" placeholder="Digite seu Nome de Usuário">
+          <input v-model="usuario.name" autocomplete="off" type="text" placeholder="Digite seu Nome">
+          <input v-model="usuario.username" autocomplete="off"  type="text" placeholder="Digite seu Nome de Usuário">
         </div>
 
         <div id="item_5" class="box">
@@ -28,9 +27,9 @@
           <h3>Repita a senha</h3>
         </div>
         <div id="item_6" class="box">
-          <input name="email" type="email" placeholder="Digite seu e-mail">
-          <input name="senha" type="password" autocomplete="off" placeholder="Digite sua Nova Senha">
-          <input name="rsenha" type="password" autocomplete="off" placeholder="Repita sua Nova Senha">
+          <input v-model="usuario.email" type="email" placeholder="Digite seu e-mail">
+          <input v-model="usuario.senha" type="password" autocomplete="off" placeholder="Digite sua Nova Senha">
+          <input v-model="usuario.senhacmp" type="password" autocomplete="off" placeholder="Repita sua Nova Senha">
         </div>
         
         <div id="item_7" class="box">
@@ -43,11 +42,19 @@
 </template>
 
 <script>
-import NavBar from '../shared/NavBar.vue'
 
 export default {
-  components:{
-    NavBar
+  data(){
+    return{
+      usuario: {
+        name:'',
+        username:'',
+        email:'',
+        senha: '',
+        senhacmp:''
+      }
+      
+    }
   }
 }
   

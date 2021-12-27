@@ -3,27 +3,46 @@
         <div class="img-login" id="div-img-login">
             <img src="../../assets/images/image-side-login.jpg" alt="trabalho-em-equipe" id="img-login">
         </div>
-        <div class="container">
+        
+        <!-- Esse form era anteriormente uma div -->
+        <form @submit.prevent="loginDoUsuario" class="container">
             <img src="../../assets/images/logo.svg" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>  
             <div class="form-login">
                 <label for="email"><strong>Email</strong></label>
-                <input type="text" name="username" placeholder="Digite seu email"/>
+                <input v-model="usuario.email" type="text" name="username" placeholder="Digite seu email"/>
                 <label for="senha"><strong>Senha</strong></label>
-                <input type="password" name="password" placeholder="Digite sua senha" />
+                <input v-model="usuario.senha" type="password" name="password" placeholder="Digite sua senha" />
             </div>
                 <button type="submit">Login</button>
             <div class="checkbox-row">
                 <label><input type="checkbox" checked="checked" name="lembrar" />Lembrar</label>
                 <span class="password"><a href="#"> Esqueceu a senha?</a></span>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
 <script>
+import http from '@/http'
+
 export default { 
     name: 'TelaLogin',
+    data(){
+        return{
+            usuario: {
+                email:'',
+                senha:''
+            }
+        }
+    },
+    methods:{
+        loginDoUsuario(){
+            http.post('login',this.usuario)
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
+    }
 }
 </script>
 
@@ -54,7 +73,8 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    }
+    color: black;
+}
 
 #soluti-login {
     width: 30%;
