@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div v-if="mustShow" class="nav-bar">
     <div class="item_1">
       <router-link to="/">
         <div class="nav-bar-home-button">
@@ -17,7 +17,6 @@
       </div>
     </div>
 
-    
     <div class="item_3">
       <div class="nav-bar-user-tag"></div>
       <img id="message_icon" src="../../assets/icons/messeger_icon.svg" alt="">
@@ -29,7 +28,14 @@
 
 <script>
 export default{
-
+  computed: {
+    currentRouteName() {
+      return this.$route.name;
+    },
+    mustShow() {
+      return this.currentRouteName != 'Index' && this.currentRouteName != 'Cadastro'
+    }
+  }
 }
 </script>
 
