@@ -4,7 +4,15 @@
       <form autocomplete="off" action="" class="form">
 
         <div id="item_1" class="box">
-          <div id="profile-pic-wrapper"></div>
+          <div id="profile-pic-wrapper"
+          :style="{ 'background-image': `url(${previewImage})` }"
+          @click="selectImage">
+          </div>
+
+          <input type="file"
+          ref="fileInput"
+          @input="pickFile">
+          <label for="sendfile" type="file"></label>
         </div>
 
         <div id="item_2" class="box">
@@ -46,6 +54,8 @@
 export default {
   data(){
     return{
+      previewImage: null,
+
       usuario: {
         name:'',
         username:'',
@@ -54,6 +64,23 @@ export default {
         senhacmp:''
       }
       
+    }
+  },
+  methods: {
+    selectImage() {
+      this.$refs.fileInput.click()
+    },
+    pickFile() {
+      let input = this.$refs.fileInput
+      let file = input.files
+      if (file && file[0]) {
+        let reader = new FileReader
+        reader.onload = event => {
+          this.previewImage = event.target.result
+        }
+        reader.readAsDataURL(file[0])
+        this.$emit('input', file[0])
+      }
     }
   }
 }
@@ -130,15 +157,21 @@ export default {
     justify-content: center;
   }
 
-  .form #item_1 #profile-pic-wrapper{
-    width: 100px;
-    height: 100px;
-
+   #profile-pic-wrapper{
+    width: 59%;
+    height: 100%;
     border-radius: 50px;
-    background-color: white;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    cursor: pointer;    
   }
 
-  .form #item_2 {
+  input[type='file'] {
+    display: none !important;
+  }
+
+    .form #item_2 {
     grid-area: b;
   }  
 
