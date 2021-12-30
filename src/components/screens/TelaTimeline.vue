@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProfileCatalog/>
+    <ProfileCatalog :username="this.usuario.nome"/>
     <Contacts/>
     <div class="content">
 
@@ -30,12 +30,22 @@ export default{
         'Authorization': `Basic ${this.$store.state.token}` 
       }
     })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        this.usuario.nome = res.data[0].nome
+        this.usuario.email = res.data[0].email
+
+        console.log(this.usuario.nome)
+      })
       .catch(err => console.log(err))
   },
   data(){
     return{
-      array: [1,2,3,4,5,6,7,8,9,10]
+      array: [1,2,3,4,5,6,7,8,9,10],
+      usuario: {
+        nome: '',
+        email: ''
+      }
     }
   }
 }

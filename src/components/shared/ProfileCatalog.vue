@@ -4,7 +4,7 @@
       <div id="proile-pic-wrapper">
         <img id="proile-pic" src="../../assets/images_for_tests/Alberto.png" alt="foto">
       </div>
-      <h1>Alberto</h1>
+      <h1>{{this.$props.username}}</h1>
       <button>Ver Perfil</button>
     </div>
     <div class="catalog-options">
@@ -24,6 +24,9 @@
 import Option from './Option.vue'
 
 export default{
+  props: {
+    username: ''
+  },
   components:{
     Option
   }
