@@ -5,37 +5,61 @@ import TelaTimeline from '../components/screens/TelaTimeline.vue'
 import Chat from '../components/screens/TelaChat.vue'
 import Cadastro from '../components/screens/TelaCadastroUsuario.vue'
 
+import store from '@/store'
+
 const routes = [
     {
       path: '/',
       name: 'TimeLine',
-      component: TelaTimeline
+      component: TelaTimeline,
+      meta: {
+        public: false
+      }
     },
     {
       path: '/login',
       name: 'Index',
-      component: Login
+      component: Login,
+      meta: {
+        public: true
+      }
     },
     {
       path: '/cadastro',
       name: 'Cadastro',
-      component: Cadastro
+      component: Cadastro,
+      meta: {
+        public: true
+      }
     },
     {
       path: '/edit',
       name: 'Edicao',
-      component: TelaEditarUsuario
+      component: TelaEditarUsuario,
+      meta: {
+        public: false
+      }
     },
     {
       path: '/chat',
       name: 'Mensagens',
-      component: Chat
+      component: Chat,
+      meta: {
+        public: false
+      }
     },
   ]
   
   const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
+  })
+
+  router.beforeEach((routeTo,routeFrom, next) => {
+    if(!routeTo.meta.public && !store.state.token) {
+      return next({ path: '/login'})
+    }
+    next()
   })
   
   export default router

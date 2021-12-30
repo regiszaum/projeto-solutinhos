@@ -25,7 +25,11 @@ export default{
     Contacts
   },
   created(){
-    http.get('userdata')
+    http.get('userdata', {
+      headers: {
+        'Authorization': `Basic ${this.$store.state.token}` 
+      }
+    })
       .then(res => console.log(res))
       .catch(err => console.log(err))
   },

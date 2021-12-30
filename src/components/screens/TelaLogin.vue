@@ -5,7 +5,7 @@
         </div>
         
         <!-- Esse form era anteriormente uma div -->
-        <form @submit.prevent="this.userLogin(usuario)" class="container">
+        <form @submit.prevent="login" class="container">
             <img src="../../assets/images/logo.svg" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>  
             <div class="form-login">
@@ -37,10 +37,17 @@ export default {
             }
         }
     },
-    methods:{
+     methods:{
         ...mapActions([
-            'userLogin'
-        ])
+            'sendLoginData'
+        ]),
+        login(){
+            this.sendLoginData(this.usuario)
+                .then(res => {
+                    this.$router.push({name: "TimeLine"})
+                })
+                .catch(err => {})  
+        }
     }
 }
 </script>

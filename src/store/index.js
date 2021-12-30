@@ -4,7 +4,6 @@ import http from '@/http'
 const store = createStore({
   state: {
     token: '',
-    number: 1
   }, // state é como se fosse o data
 
   mutations: {
@@ -14,15 +13,18 @@ const store = createStore({
   }, // é para alterar o estado
 
   actions: {
-    userLogin({ commit },payload){
-  
-      http.post('auth/login',payload)
-      .then(res => {
-          var token = res.data.access_token
-          commit('SET_TOKEN',{token})
-      })  
-      .catch(err => {
-          console.log("Erro ao efetuar login" + err)
+    sendLoginData({ commit },payload){
+      return new Promise((resolve,reject) => {
+        http.post('auth/login',payload)
+        .then(res => {
+            var token = res.data.access_token
+            commit('SET_TOKEN',{token})
+            resolve(res)
+        })  
+        .catch(err => {
+            console.log("Erro ao efetuar login " + err)
+            reject()
+        })
       })
     }
   }, // vai te dar ações dentro de um determinado contexto, pode utilizar sua logica para utilizar a mutation para mudar o estado, ele faz o commit no estado. só uma action, quando precisa de promessa
