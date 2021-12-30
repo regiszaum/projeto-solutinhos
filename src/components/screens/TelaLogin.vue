@@ -5,7 +5,7 @@
         </div>
         
         <!-- Esse form era anteriormente uma div -->
-        <form @submit.prevent="loginDoUsuario" class="container">
+        <form @submit.prevent="this.userLogin(usuario)" class="container">
             <img src="../../assets/images/logo.svg" alt="soluti-logo" id="soluti-login">
             <h1>Login</h1>  
             <div class="form-login">
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import http from '@/http'
+/* import http from '@/http' */
+import { mapActions } from 'vuex'
 
 export default { 
     name: 'TelaLogin',
@@ -37,15 +38,9 @@ export default {
         }
     },
     methods:{
-        loginDoUsuario(){
-            http.post('login',this.usuario)
-                .then(res => {
-                    window.alert("Bem vindo(a) " + res.data.user.nome)
-                })
-                .catch(err => {
-                    window.alert("O usuário informado não está cadastrado")
-                })
-        }
+        ...mapActions([
+            'userLogin'
+        ])
     }
 }
 </script>

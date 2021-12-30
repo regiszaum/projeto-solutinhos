@@ -39,11 +39,8 @@ export default{
       http.post("auth/register",this.usuario)
         .then(res => console.log(res))
         .catch(err => {
-          console.log('epa deu ruim')
+          console.log("Erro ao realizar cadastro" + err)
         })
-      console.log(this.usuario.nome)
-      console.log(this.usuario.email)
-      console.log(this.usuario.senha)
     }
   }
 }

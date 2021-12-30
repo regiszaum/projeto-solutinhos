@@ -13,6 +13,8 @@
 
 <script>
 
+import http from '@/http'
+
 import ProfileCatalog from '../shared/ProfileCatalog.vue'
 import NavBar from '../shared/NavBar.vue'
 import Contacts from '../shared/ContactsField.vue'
@@ -21,6 +23,11 @@ export default{
   components: {
     ProfileCatalog,
     Contacts
+  },
+  created(){
+    http.get('userdata')
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   },
   data(){
     return{
