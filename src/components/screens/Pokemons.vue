@@ -2,7 +2,7 @@
   <div class="container">
       <ul class="pokemon-wrapper">
         <li v-for="pokemon in pokemons" :key="pokemon.name">
-          <pokemon-card :url='pokemon.url' :name="pokemon.name"/>
+          <pokemon-card :url='pokemon.url'/>
         </li>
       </ul>
   </div>
@@ -52,7 +52,9 @@ export default {
 
     display: flex;
     flex-wrap: wrap;
-  }
+    align-items: center;
+    justify-content: center;
 
-  
+    list-style: none;
+  }
 </style>
