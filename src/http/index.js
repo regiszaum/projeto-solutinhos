@@ -8,4 +8,4 @@ const http = axios.create({
   }
 })
 
-export default http
+export default http;

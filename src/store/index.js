@@ -38,7 +38,7 @@ const store = createStore({
         })
       })
     }
-  }, // vai te dar ações dentro de um determinado contexto, pode utilizar sua logica para utilizar a mutation para mudar o estado, ele faz o commit no estado. só uma action, quando precisa de promessa
+  }, // vai te dar ações dentro de um determinado contexto, pode utilizar sua logica para utilizar a mutation para mudar o estado, ele faz o commit no estado. só usa action, quando precisa de promessa
   
   getters: {
     getUserById: (state) => (id) => {
