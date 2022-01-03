@@ -12,11 +12,9 @@
 </template>
 
 <script>
-
-import http from '@/http'
+import { mapGetters } from 'vuex'
 
 import ProfileCatalog from '../shared/ProfileCatalog.vue'
-import NavBar from '../shared/NavBar.vue'
 import Contacts from '../shared/ContactsField.vue'
 
 export default{
@@ -25,19 +23,9 @@ export default{
     Contacts
   },
   created(){
-    http.get('userdata', {
-      headers: {
-        'Authorization': `Basic ${this.$store.state.token}` 
-      }
-    })
-      .then(res => {
-        console.log(res)
-        this.usuario.nome = res.data[0].nome
-        this.usuario.email = res.data[0].email
-
-        console.log(this.usuario.nome)
-      })
-      .catch(err => console.log(err))
+    const user = this.getUserById(11)
+    this.usuario.nome = user.nome
+    this.usuario.email = user.email
   },
   data(){
     return{
@@ -47,6 +35,11 @@ export default{
         email: ''
       }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getUserById'
+    ])
   }
 }
 

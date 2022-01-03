@@ -50,16 +50,16 @@ const routes = [
     },
   ]
   
-  const router = createRouter({
-    history: createWebHistory(process.env.BASE_URL),
-    routes
-  })
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
 
-  router.beforeEach((routeTo,routeFrom, next) => {
-    if(!routeTo.meta.public && !store.state.token) {
-      return next({ path: '/login'})
-    }
-    next()
-  })
-  
-  export default router
+router.beforeEach((routeTo,routeFrom, next) => {
+  if(!routeTo.meta.public && !store.state.token) {
+    return next({ path: '/login'})
+  }
+  next()
+})
+
+export default router
