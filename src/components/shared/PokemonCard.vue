@@ -51,75 +51,77 @@ export default{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    background-color: red;
   }
 
   .normal{
-    background-color: gray;
+    background-color: #A8A77A;
   }
 
   .grass{
-    background-color: green;
+    background-color: #7AC74C;
   }
 
   .fire{
-    background-color: red;
+    background-color: #EE8130;
   }
 
   .water{
-    background-color: blue;
+    background-color: #6390F0;
   }
 
   .bug{
-    background-color: greenyellow;
+    background-color: #A6B91A;
   }
 
   .poison{
-    background-color: purple;
+    background-color: #A33EA1;
   }
 
   .electric{
-    background-color: yellow;
+    background-color: #F7D02C;
   }
 
   .ground{
-    background-color: brown;
+    background-color: #E2BF65;
   }
 
   .fairy{
-    background-color: gray;
+    background-color: #D685AD;
   }
 
   .fighting{
-    background-color: cornflowerblue;
+    background-color: #C22E28;
   }
 
   .psychic{
-    background-color: rgb(223, 223, 0);
+    background-color: #F95587;
   }
 
   .rock{
-    background-color: rgb(87, 86, 86);
+    background-color: #B6A136;
   }
 
   .ghost{
-    background-color: rgb(78, 13, 78);
+    background-color: #735797;
   }
 
   .ice{
-    background-color: rgb(38, 163, 247);
+    background-color: #96D9D6;
   }
 
   .flying{
-    background-color: gray;
+    background-color: #A98FF3;
   }
 
   .steel{
-    background-color: gray;
+    background-color: #B7B7CE;
   }
 
   .dark{
-    background-color: gray;
+    background-color: #705746;
+  }
+
+  .dragon{
+    background-color: #6F35FC;
   }
 </style>
