@@ -4,6 +4,7 @@ import TelaEditarUsuario from '../components/screens/TelaEditarUsuario.vue'
 import TelaTimeline from '../components/screens/TelaTimeline.vue'
 import Chat from '../components/screens/TelaChat.vue'
 import Cadastro from '../components/screens/TelaCadastroUsuario.vue'
+import Pokemons from '../components/screens/Pokemons.vue'
 
 import store from '@/store'
 
@@ -48,6 +49,14 @@ const routes = [
         public: false
       }
     },
+    {
+      path: '/pokemons',
+      name: 'Pokemons',
+      component: Pokemons,
+      meta: {
+        public: false
+      }
+    }
   ]
   
 const router = createRouter({
@@ -55,11 +64,11 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((routeTo,routeFrom, next) => {
+/* router.beforeEach((routeTo,routeFrom, next) => {
   if(!routeTo.meta.public && !store.state.token) {
     return next({ path: '/login'})
   }
   next()
-})
+}) */
 
 export default router
