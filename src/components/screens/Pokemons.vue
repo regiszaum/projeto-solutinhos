@@ -17,11 +17,11 @@ export default {
     'pokemon-card': PokemonCard,
   },
   created(){
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=150&offset=0")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=15&offset=0")
       .then(res => {
         this.pokemons = res.data.results
-        console.log(this.pokemons)
       })
+      .catch(err => console.log(err))
   },
   data(){ 
     return {
