@@ -1,10 +1,10 @@
 <template>
-  <div class="back-card-line ">
-    <div :class="['card-fill',pokemon.tipo]">
+  <div v-if="isFetched" class="back-card-line ">
+    <div :class="['card-fill',pokemon.type]">
       <div class="name-n-power">
-        <h1>Pokemon</h1>
-        <h2>150 HP</h2>
-        <img id="type-icon" :src="require(`../../assets/type-icons/${test}.svg`)" :alt="pokemon.tipo">
+        <h1>{{pokemon.name}}</h1>
+        <h2>{{pokemon.stats.hp + " HP"}}</h2>
+        <img id="type-icon" :src="require(`../../assets/type-icons/${pokemon.type}.svg`)">
       </div>
 
       <div class="pokemon-display-back-line">
@@ -16,64 +16,91 @@
       <div class="pokemon-stats">
         <div class="stat">
           <h1>Attack</h1>
-          <p>40</p>
+          <p>{{pokemon.stats.attack}}</p>
         </div>
         <div class="stat">
           <h1>Defense</h1>
-          <p>45</p>
+          <p>{{pokemon.stats.defense}}</p>
         </div>
         <div class="stat">
           <h1>Special-Attack</h1>
-          <p>60</p>
+          <p>{{pokemon.stats.special_attack}}</p>
         </div>
         <div class="stat">
           <h1>Special-Defense</h1>
-          <p>20</p>
+          <p>{{pokemon.stats.special_defense}}</p>
         </div>
         <div class="stat">
           <h1>Speed</h1>
-          <p>65</p>
+          <p>{{pokemon.stats.speed}}</p>
         </div>
       </div>
     </div>
   </div>
+  <div v-else>
+    loading
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
 
 export default{
   props: {
     url: {
       type: String,
       required: true
+    },
+    pokemon_index: {
+      type: Number,
+      required: true
     }
   },
   created(){
-    axios(this.$props.url)
-    .then(res => {
-      this.pokemon.img = res.data.sprites.front_default
-      this.pokemon.nome = res.data.name
-      this.pokemon.tipo = res.data.types[0].type.name
-    })
-    .catch(err => console.log("Erro na requisição" + err))
+    this.fetchPokemonData({index:this.$props.pokemon_index, url:this.$props.url})
+      .then(res => {
+        this.pokemon.name = res.data.name
+        this.pokemon.type = res.data.types[0].type.name
+        this.pokemon.img = res.data.sprites.front_default
+        this.pokemon.stats.hp = res.data.stats[0].base_stat
+        this.pokemon.stats.attack = res.data.stats[1].base_stat
+        this.pokemon.stats.defense = res.data.stats[2].base_stat
+        this.pokemon.stats.special_attack = res.data.stats[3].base_stat
+        this.pokemon.stats.special_defense = res.data.stats[4].base_stat
+        this.pokemon.stats.speed = res.data.stats[5].base_stat
+
+        this.isFetched = true
+      })
+      .catch(err => console.log(err))
   },
   data(){
     return {
-      test: 'grass',
+      isFetched: false,
+
       pokemon: {
-        img: '',
-        nome: '',
-        tipo: ''
+        img:'',
+        name: '',
+        type: '',
+        stats: {
+          hp: '',
+          attack: '',
+          defense: '',
+          special_attack:'',
+          special_defense:'',
+          speed:''
+        }
       }
     }
   },
+  computed: {
+    ...mapGetters([
+      'getPokemonTypes'
+    ])
+  },
   methods: {
-    typeIcon(tipo){
-      const iconpath = `../../assets/type-icons/${tipo}.svg`
-      console.log(iconpath)
-      return 'oi'
-    }
+    ...mapActions([
+      'fetchPokemonData'
+    ])
   }
 }
 </script>
@@ -112,7 +139,8 @@ export default{
     width: 200px;
     margin-bottom: 3px;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 35% 15%;
     align-items: center;
     justify-content: space-between;
   }
@@ -121,11 +149,13 @@ export default{
     margin-left: 10px;
   }
 
-  .name-n-power h2 {
-    margin-left: 37px;
+  .name-n-power h2{
+    margin-left: 25px;
   }
 
   .name-n-power #type-icon{
+    margin-left: 7px;
+
     width: 25px;
     height: 25px;
   }

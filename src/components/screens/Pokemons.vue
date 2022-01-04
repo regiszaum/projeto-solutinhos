@@ -1,32 +1,43 @@
 <template>
   <div class="container">
-      <ul class="pokemon-wrapper">
-        <li v-for="pokemon in pokemons" :key="pokemon.name">
-          <pokemon-card :url='pokemon.url'/>
+      <ul v-if="isFetched" class="pokemon-wrapper">
+        <li v-for="(pokemon,index) in getPokemons" :key="pokemon.name">
+          <pokemon-card :pokemon_index="index" :url="pokemon.url"/>
         </li>
       </ul>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
 import PokemonCard from '../shared/PokemonCard.vue'
 
 export default {
   components: {
-    'pokemon-card': PokemonCard,
+    'pokemon-card': PokemonCard
   },
   created(){
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=15&offset=0")
-      .then(res => {
-        this.pokemons = res.data.results
-      })
-      .catch(err => console.log(err))
+    this.fetchPokemons()
+    .then(()=>{
+      this.isFetched = true
+    })
+    .catch(err => console.log(err))
   },
-  data(){ 
+  data(){
     return {
-      pokemons: []
+      isFetched: false
     }
+  },
+  methods: {
+    ...mapActions([
+      'fetchPokemons',
+      'fetchPokemonData'
+    ])
+  },
+  computed: {
+    ...mapGetters([
+      'getPokemons'
+    ])
   }
 }
 </script>
