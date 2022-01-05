@@ -11,6 +11,16 @@
       <div class="nav-bar-p2">
         <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
         <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
+        <div id="generation-select-holder">
+          <button @click="getgen(1)">1 GEN</button>
+          <button @click="getgen(2)">2 GEN</button>
+          <button @click="getgen(3)">3 GEN</button>
+          <button @click="getgen(4)">4 GEN</button>
+          <button @click="getgen(5)">5 GEN</button>
+          <button @click="getgen(6)">6 GEN</button>
+          <button @click="getgen(7)">7 GEN</button>
+          <button @click="getgen(8)">8 GEN</button>
+        </div>
       </div>
       <div class="nav-bar-p3">
       </div>
@@ -19,6 +29,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default{
   computed: {
     currentRouteName() {
@@ -27,6 +39,14 @@ export default{
     mustShow() {
       return this.currentRouteName != 'Index' && this.currentRouteName != 'Cadastro'
     }
+  },methods: {
+    getgen(gen){
+      console.log("Requisição da " + gen + " geração")
+      this.fetchPokemons({gen: gen})
+    },
+    ...mapActions([
+      'fetchPokemons',
+    ])
   }
 }
 </script>
@@ -40,6 +60,8 @@ export default{
   .nav-bar {
     width: 100%;
     position: fixed;
+
+    z-index: 1;
   }
 
   .nav-bar-p1-l {
@@ -161,115 +183,24 @@ export default{
     z-index: 1;
   }
 
-  .nav-bar > * {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .item_1{
-    justify-content: flex-start;
-  }
-
-  .item_1 .nav-bar-home-button{
-    margin-left: 50px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .item_1 .nav-bar-home-button:hover #hover-line{
-    display: inline;
-  }
-
-  .item_1 .nav-bar-home-button #home_icon{
-    align-self: center;
-
+  .nav-bar-p2 #generation-select-holder{
     width: auto;
-    height: 25px;
-  }
+    height: auto;
 
-  .item_1 .nav-bar-home-button #hover-line{
     position: absolute;
-    top: 64px;
+    top: 60px;
+    left: 145px;
 
-    width: 15px;
-    border: 3px solid white;
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 
-    display: none;
+    z-index: 1;
   }
 
-  .item_2 .nav-bar-search-bar-wrapper{
-    position: relative;
-  }
-
-  .item_2 .nav-bar-search-bar-wrapper .nav-bar-search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 450px;
-    height: 37px;
-
-    border-radius: 10px;
-    border: none;
-
-    box-sizing: border-box;
-    padding: 5px 40px;
-
-    font-weight: 400;
+  .nav-bar-p2 #generation-select-holder button{
     color: black;
-  }
-
-  .item_2 #soluti_logo{
-    position: absolute;
-    top: 3px;
-    left: 6px;
-
-    width: auto;
-    height: 30px;
-  }
-
-  .item_2 #search_icon{
-    position: absolute;
-    top: 6px;
-    right: 0px;
-
-    margin-right: 3px;
-  }
-
-  .item_3 .nav-bar-user-tag {
-    width: 100px;
-    height: 37px;
-    margin-right: 20px;
-
-    border-radius: 10px;
-
-    background-color: var(--branco);
-  }
-
-  .item_3 > img{
-    margin-left: 20px;
-    width: auto;
-  }
-
-  .item_3 #message_icon{
-    height: 23px;
-  }
-
-  .item_3 #notification_icon{
-    height: 26px;
-  }
-
-  .item_3 #config_icon{
-    height: 23px;
-  }
-
-  .nav-bar-right-content .nav-bar-right-content_icon{
-    margin-left: 20px;
+    font-size: 11px;
   }
 </style>

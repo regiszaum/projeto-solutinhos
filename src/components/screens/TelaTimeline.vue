@@ -23,9 +23,6 @@ export default{
     Contacts
   },
   created(){
-    const user = this.getUserById(11)
-    this.usuario.nome = user.nome
-    this.usuario.email = user.email
   },
   data(){
     return{

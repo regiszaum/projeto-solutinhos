@@ -23,9 +23,10 @@ const store = createStore({
   }, // é para alterar o estado
 
   actions: {
-    fetchPokemons({commit}){
+    fetchPokemons({commit},{gen}){
       return new Promise((resolve,reject) => {
-        pokeapi.get("pokemon?limit=250&offset=0")
+        if(gen === 'all'){
+          pokeapi.get("pokemon?limit=250&offset=0")
         .then(res => {
           commit('SET_POKEMONS', res.data.results)
           resolve()
@@ -33,6 +34,79 @@ const store = createStore({
         .catch(err => {
           reject(err)
         })
+        }else if(gen === 1){
+          pokeapi.get("pokemon?limit=151&offset=0")
+            .then(res => {
+              commit('SET_POKEMONS', res.data.results)
+              resolve()
+            })
+            .catch(err => {
+              reject(err)
+            })
+        }else if(gen === 2) {
+          pokeapi.get("pokemon?limit=100&offset=151")
+            .then(res => {
+              commit('SET_POKEMONS', res.data.results)
+              resolve()
+            })
+            .catch(err => {
+              reject(err)
+            })
+        }else if(gen === 3) {
+          pokeapi.get("pokemon?limit=135&offset=251")
+            .then(res => {
+              commit('SET_POKEMONS', res.data.results)
+              resolve()
+            })
+            .catch(err => {
+              reject(err)
+            })
+        }else if(gen === 4) {
+          pokeapi.get("pokemon?limit=108&offset=386")
+            .then(res => {
+              commit('SET_POKEMONS', res.data.results)
+              resolve()
+            })
+            .catch(err => {
+              reject(err)
+            })
+        }else if(gen === 5){
+          pokeapi.get("pokemon?limit=155&offset=494")
+          .then(res => {
+            commit('SET_POKEMONS', res.data.results)
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
+        }else if(gen === 6){
+          pokeapi.get("pokemon?limit=72&offset=649")
+          .then(res => {
+            commit('SET_POKEMONS', res.data.results)
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
+        }else if(gen === 7){
+          pokeapi.get("pokemon?limit=88&offset=721")
+          .then(res => {
+            commit('SET_POKEMONS', res.data.results)
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
+        }else if(gen === 8){
+          pokeapi.get("pokemon?limit=121&offset=809")
+          .then(res => {
+            commit('SET_POKEMONS', res.data.results)
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
+        }
       })
     },
     

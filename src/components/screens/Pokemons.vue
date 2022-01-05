@@ -17,7 +17,7 @@ export default {
     'pokemon-card': PokemonCard
   },
   created(){
-    this.fetchPokemons()
+    this.fetchPokemons({gen:'all'})
     .then(()=>{
       this.isFetched = true
     })
@@ -31,7 +31,6 @@ export default {
   methods: {
     ...mapActions([
       'fetchPokemons',
-      'fetchPokemonData'
     ])
   },
   computed: {
