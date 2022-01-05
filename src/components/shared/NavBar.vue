@@ -12,14 +12,14 @@
         <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
         <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
         <div id="generation-select-holder">
-          <button @click="getgen(1)">1 GEN</button>
-          <button @click="getgen(2)">2 GEN</button>
-          <button @click="getgen(3)">3 GEN</button>
-          <button @click="getgen(4)">4 GEN</button>
-          <button @click="getgen(5)">5 GEN</button>
-          <button @click="getgen(6)">6 GEN</button>
-          <button @click="getgen(7)">7 GEN</button>
-          <button @click="getgen(8)">8 GEN</button>
+          <button @click="getgen(1)"><span>1°</span> <span>GEN</span></button>
+          <button @click="getgen(2)"><span>2°</span> <span>GEN</span></button>
+          <button @click="getgen(3)"><span>3°</span> <span>GEN</span></button>
+          <button @click="getgen(4)"><span>4°</span> <span>GEN</span></button>
+          <button @click="getgen(5)"><span>5°</span> <span>GEN</span></button>
+          <button @click="getgen(6)"><span>6°</span> <span>GEN</span></button>
+          <button @click="getgen(7)"><span>7°</span> <span>GEN</span></button>
+          <button @click="getgen(8)"><span>8°</span> <span>GEN</span></button>
         </div>
       </div>
       <div class="nav-bar-p3">
@@ -188,8 +188,8 @@ export default{
     height: auto;
 
     position: absolute;
-    top: 60px;
-    left: 145px;
+    top: 50px;
+    left: 125px;
 
     display: grid;
     gap: 2px;
@@ -200,7 +200,31 @@ export default{
   }
 
   .nav-bar-p2 #generation-select-holder button{
-    color: black;
+    width: 38px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+   
+
+    background-color: #d23b2d;
+    border: solid 0.5px black;
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  .nav-bar-p2 #generation-select-holder button:hover {
+    background-color: #d23b2d;
+    box-shadow: none;
+  }
+
+  .nav-bar-p2 #generation-select-holder button span {
+    box-sizing: border-box;
+    padding-left: 5px;
+    color: white;
     font-size: 11px;
   }
 </style>
