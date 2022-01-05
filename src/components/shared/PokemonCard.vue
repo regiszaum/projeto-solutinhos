@@ -1,10 +1,12 @@
 <template>
   <div v-if="isFetched" class="back-card-line ">
-    <div :class="['card-fill',pokemon.type]">
+    <div :class="['card-fill',pokemon.types[0].type.name]">
       <div class="name-n-power">
-        <h1>{{pokemon.name}}</h1>
-        <h2>{{pokemon.stats.hp + " HP"}}</h2>
-        <img id="type-icon" :src="require(`../../assets/type-icons/${pokemon.type}.svg`)">
+        <h1>{{pokemonNameUpperCase(pokemon.name)}}</h1>
+        <div class="powers">
+          <img v-for="element in pokemon.types" :key="element.slot" id="type-icon" :src="require(`../../assets/type-icons/${element.type.name}.svg`)">
+          <h2>{{pokemon.stats.hp + " HP"}}</h2>
+      </div>
       </div>
 
       <div class="pokemon-display-back-line">
@@ -60,7 +62,10 @@ export default{
     this.fetchPokemonData({index:this.$props.pokemon_index, url:this.$props.url})
       .then(res => {
         this.pokemon.name = res.data.name
+
         this.pokemon.type = res.data.types[0].type.name
+        this.pokemon.types = res.data.types
+
         this.pokemon.img = res.data.sprites.front_default
         this.pokemon.stats.hp = res.data.stats[0].base_stat
         this.pokemon.stats.attack = res.data.stats[1].base_stat
@@ -70,6 +75,8 @@ export default{
         this.pokemon.stats.speed = res.data.stats[5].base_stat
 
         this.isFetched = true
+
+        console.log(this.pokemon.types)
       })
       .catch(err => console.log(err))
   },
@@ -80,6 +87,7 @@ export default{
       pokemon: {
         img:'',
         name: '',
+        types: [],
         type: '',
         stats: {
           hp: '',
@@ -100,14 +108,22 @@ export default{
   methods: {
     ...mapActions([
       'fetchPokemonData'
-    ])
+    ]),
+
+    pokemonNameUpperCase(name){
+      return name.charAt(0).toUpperCase() + name.slice(1)
+    }
   }
 }
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
   * {
     color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
   }
 
   .back-card-line {
@@ -120,8 +136,10 @@ export default{
     justify-content: center;
 
     background-color: #FFFF00;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 
     border-radius: 4px;
+    border: 1.5px solid #000000;
   }
 
   .card-fill{
@@ -133,6 +151,7 @@ export default{
     justify-content: center;
 
     border-radius: 8px;
+    border: 1.5px solid #000000;
   }
 
   .name-n-power{
@@ -140,7 +159,7 @@ export default{
     margin-bottom: 3px;
 
     display: grid;
-    grid-template-columns: 50% 35% 15%;
+    grid-template-columns: 50% 50%;
     align-items: center;
     justify-content: space-between;
   }
@@ -149,8 +168,19 @@ export default{
     margin-left: 10px;
   }
 
-  .name-n-power h2{
-    margin-left: 25px;
+  .name-n-power .powers h2{
+    margin: -3px;
+    font-size: 12px;
+  }
+
+  .name-n-power .powers{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .name-n-power #type-icon{
@@ -170,6 +200,7 @@ export default{
 
     background-color: #FFFF00;
     border-radius: 2px;
+    border: 1.5px solid #000000;
   }
 
   .pokemon-display{
@@ -182,6 +213,7 @@ export default{
 
     background-color: #FFFFFF;
     border-radius: 2px;
+    border: 1.5px solid #000000;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }
 
@@ -220,74 +252,76 @@ export default{
   }
 
   .normal{
-    background-color: #A8A77A;
+    /* background-color: #A8A77A; */
+    background: rgb(168,167,122);
+background: linear-gradient(0deg, rgba(168,167,122,1) 0%, rgba(252,239,239,1) 100%);
   }
 
   .grass{
-    background-color: #7AC74C;
+   background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #7AC74C;
   }
 
   .fire{
-    background-color: #EE8130;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #EE8130;
   }
 
   .water{
-    background-color: #6390F0;
+    background: linear-gradient(180deg, rgba(251, 249, 249, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #6390F0;
   }
 
   .bug{
-    background-color: #A6B91A;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #A6B91A;
   }
 
   .poison{
-    background-color: #A33EA1;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #A33EA1;
   }
 
   .electric{
-    background-color: #F7D02C;
+    background: linear-gradient(180deg, rgba(251, 249, 249, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #F7D02C;
   }
 
   .ground{
-    background-color: #E2BF65;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #E2BF65;
   }
 
   .fairy{
-    background-color: #D685AD;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #D685AD;
   }
 
   .fighting{
-    background-color: #C22E28;
+    background: linear-gradient(180deg, rgba(251, 249, 249, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #BBAACC;
   }
 
   .psychic{
-    background-color: #F95587;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #F95587;
   }
 
   .rock{
-    background-color: #B6A136;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #B6A136;
   }
 
   .ghost{
-    background-color: #735797;
+    background: linear-gradient(180deg, rgba(251, 249, 249, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #735797;
   }
 
   .ice{
-    background-color: #96D9D6;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #96D9D6;
   }
 
   .flying{
-    background-color: #A98FF3;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #A98FF3;
   }
 
   .steel{
-    background-color: #B7B7CE;
+    background: linear-gradient(180deg, rgba(251, 249, 249, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #B7B7CE;
   }
 
   .dark{
-    background-color: #705746;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #705746;
   }
 
   .dragon{
-    background-color: #6F35FC;
+    background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #6F35FC;
   }
 </style>
