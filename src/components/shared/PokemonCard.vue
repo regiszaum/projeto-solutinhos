@@ -75,8 +75,6 @@ export default{
         this.pokemon.stats.speed = res.data.stats[5].base_stat
 
         this.isFetched = true
-
-        console.log(this.pokemon.types)
       })
       .catch(err => console.log(err))
   },
