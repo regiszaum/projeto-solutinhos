@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.6, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 255.1 255.1" style="enable-background:new 0 0 255.1 255.1;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#FBD100;}
-	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
-</style>
-<circle class="st0" cx="127.6" cy="127.6" r="121.6"/>
-<polygon class="st1" points="180.975,138.406 153.849,54.619 95.401,54.619 111.138,101.734 66.225,101.734 154.632,206.581 
-	137.343,138.406 "/>
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25.0098 48.8436C38.1728 48.8436 48.8436 38.1728 48.8436 25.0098C48.8436 11.8468 38.1728 1.17601 25.0098 1.17601C11.8468 1.17601 1.17601 11.8468 1.17601 25.0098C1.17601 38.1728 11.8468 48.8436 25.0098 48.8436Z" fill="#FBD100"/>
+<path d="M47.8436 25.0098C47.8436 37.6206 37.6206 47.8436 25.0098 47.8436C12.399 47.8436 2.17601 37.6206 2.17601 25.0098C2.17601 12.399 12.399 2.17601 25.0098 2.17601C37.6206 2.17601 47.8436 12.399 47.8436 25.0098Z" stroke="black" stroke-opacity="0.25" stroke-width="2"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M35.4714 27.1278L30.1546 10.7054H18.6987L21.7832 19.94H12.9802L30.3081 40.4902L26.9194 27.1278H35.4714Z" fill="white"/>
 </svg>
