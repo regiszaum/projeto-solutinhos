@@ -185,8 +185,8 @@ export default{
 
   .name-n-power #type-icon{
     margin-left: 7px;
-
-    width: 25px;
+    margin-right: 9px;
+    width: 20px;
     height: 25px;
   }
 
