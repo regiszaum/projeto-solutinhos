@@ -25,7 +25,7 @@ const store = createStore({
   actions: {
     fetchPokemons({commit}){
       return new Promise((resolve,reject) => {
-        pokeapi.get("pokemon?limit=150&offset=0")
+        pokeapi.get("pokemon?limit=250&offset=0")
         .then(res => {
           commit('SET_POKEMONS', res.data.results)
           resolve()

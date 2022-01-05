@@ -4,14 +4,14 @@
       <div class="name-n-power">
         <h1>{{pokemonNameUpperCase(pokemon.name)}}</h1>
         <div class="powers">
-          <img v-for="element in pokemon.types" :key="element.slot" id="type-icon" :src="require(`../../assets/type-icons/${element.type.name}.svg`)">
+          <img draggable="false" v-for="element in pokemon.types" :key="element.slot" id="type-icon" :src="require(`../../assets/type-icons/${element.type.name}.svg`)">
           <h2>{{pokemon.stats.hp + " HP"}}</h2>
       </div>
       </div>
 
       <div class="pokemon-display-back-line">
         <div class="pokemon-display"> 
-          <img :src="pokemon.img" :alt="pokemon.nome">
+          <img draggable="false" :src="pokemon.img" :alt="pokemon.nome">
         </div>
       </div>
 
@@ -75,8 +75,6 @@ export default{
         this.pokemon.stats.speed = res.data.stats[5].base_stat
 
         this.isFetched = true
-
-        console.log(this.pokemon.types)
       })
       .catch(err => console.log(err))
   },
