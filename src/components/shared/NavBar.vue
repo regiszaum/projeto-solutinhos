@@ -1,27 +1,19 @@
 <template>
-  <div v-if="mustShow" class="nav-bar">
-    <div class="item_1">
-      <router-link to="/">
-        <div class="nav-bar-home-button">
-          <img  id="home_icon" src="../../assets/icons/home_logo.svg" alt="">
-          <hr id="hover-line">
-        </div>
-      </router-link>
-    </div>
-
-    <div class="item_2">
-      <div class="nav-bar-search-bar-wrapper">
-        <input placeholder="Procurar na Plataforma" type="text" class="nav-bar-search-bar">
-        <img id="soluti_logo" src="../../assets/images/logo.svg" alt="logo">
-        <img id="search_icon" src="../../assets/icons/search_icon.svg" alt="search_icon">
+  <div v-if="mustShow" class="nav-bar" >
+    <div class="nav-bar-p1-l">
+      <div class="nav-bar-p2-l">
+      </div>
+      <div class="nav-bar-p3-l">
       </div>
     </div>
 
-    <div class="item_3">
-      <div class="nav-bar-user-tag"></div>
-      <img id="message_icon" src="../../assets/icons/messeger_icon.svg" alt="">
-      <img id="notification_icon" src="../../assets/icons/notifications_icon.svg" alt="">
-      <img id="config_icon" src="../../assets/icons/configuration_icon.svg" alt="">
+    <div class="nav-bar-p1">
+      <div class="nav-bar-p2">
+        <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
+        <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
+      </div>
+      <div class="nav-bar-p3">
+      </div>
     </div>
   </div>
 </template>
@@ -40,34 +32,131 @@ export default{
 </script>
 
 <style scoped>
-  @media screen and (max-width: 1000px){
-    .item_2 .nav-bar-search-bar-wrapper{
-      display: none;
-    }
-  }
 
   input:focus::placeholder {
     color: transparent;
   }
 
   .nav-bar {
+    width: 100%;
     position: fixed;
+  }
 
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
-    grid-template-areas: "A B C";
-    justify-items: center;
-    align-content: center;
-  
+  .nav-bar-p1-l {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+
+    background-color: #000000;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  .nav-bar-p2-l {
+    position: absolute;
+    top: 1px;
+    left: 0px;
+
+    background-color: #000000;
+
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 120px;
+
+    border-radius: 0px 0px 15px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) -20px 5px 15px;
+  }
+
+  .nav-bar-p3-l {
+    position: absolute;
+    top: -86px;
+    left: 201px;
+
+    transform: rotate(134deg);
+
+    background-color: #000000;
+
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 120px;
+
+    border-radius: 0px 15px 0px 0px;
+  }
+
+  .nav-bar-p1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 
     margin: 0;
     padding: 0;
     width: 100%;
     height: 70px;
 
-    background-color: var(--verde-escuro);
+    background-color: #d23b2d;
 
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  .nav-bar-p2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    background-color: #d23b2d;
+
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 120px;
+
+    border-radius: 0px 0px 15px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) -20px 5px 15px;
+  }
+
+  .nav-bar-p3{
+    position: absolute;
+    top: -88px;
+    left: 201px;
+
+    transform: rotate(134deg);
+
+    background-color: #d23b2d;
+
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 120px;
+
+    border-radius: 0px 15px 0px 0px;
+  }
+
+  .nav-bar-p2 #pokedex1 {
+    position: absolute;
+
+    top: 10px;
+    left: 10px;
+
+    width: auto;
+    height: 100px;
+  }
+
+  .nav-bar-p2 #pokedex2 {
+    position: absolute;
+
+    top: 20px;
+    left: 150px;
+
+    width: auto;
+    height: 15px;
 
     z-index: 1;
   }
