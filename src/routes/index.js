@@ -42,14 +42,6 @@ const routes = [
       }
     },
     {
-      path: '/chat',
-      name: 'Mensagens',
-      component: Chat,
-      meta: {
-        public: false
-      }
-    },
-    {
       path: '/pokemons',
       name: 'Pokemons',
       component: Pokemons,
