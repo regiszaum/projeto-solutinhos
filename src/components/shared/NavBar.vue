@@ -1,28 +1,38 @@
 <template>
   <div v-if="mustShow" class="nav-bar" >
-    <div class="nav-bar-p1-l">
-      <div class="nav-bar-p2-l">
+
+    <div v-if="navType" class="pokedex-navbar">
+      <div class="nav-bar-p1-l">
+        <div class="nav-bar-p2-l">
+        </div>
+        <div class="nav-bar-p3-l">
+        </div>
       </div>
-      <div class="nav-bar-p3-l">
+
+      <div class="nav-bar-p1">
+        <div class="nav-bar-p2">
+          <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
+          <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
+          <div id="generation-select-holder">
+            <button @click="getgen(1)"><span>1°</span> <span>GEN</span></button>
+            <button @click="getgen(2)"><span>2°</span> <span>GEN</span></button>
+            <button @click="getgen(3)"><span>3°</span> <span>GEN</span></button>
+            <button @click="getgen(4)"><span>4°</span> <span>GEN</span></button>
+            <button @click="getgen(5)"><span>5°</span> <span>GEN</span></button>
+            <button @click="getgen(6)"><span>6°</span> <span>GEN</span></button>
+            <button @click="getgen(7)"><span>7°</span> <span>GEN</span></button>
+            <button @click="getgen(8)"><span>8°</span> <span>GEN</span></button>
+          </div>
+        </div>
+        <div class="nav-bar-p3">
+        </div>
       </div>
     </div>
 
-    <div class="nav-bar-p1">
-      <div class="nav-bar-p2">
-        <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
-        <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
-        <div id="generation-select-holder">
-          <button @click="getgen(1)"><span>1°</span> <span>GEN</span></button>
-          <button @click="getgen(2)"><span>2°</span> <span>GEN</span></button>
-          <button @click="getgen(3)"><span>3°</span> <span>GEN</span></button>
-          <button @click="getgen(4)"><span>4°</span> <span>GEN</span></button>
-          <button @click="getgen(5)"><span>5°</span> <span>GEN</span></button>
-          <button @click="getgen(6)"><span>6°</span> <span>GEN</span></button>
-          <button @click="getgen(7)"><span>7°</span> <span>GEN</span></button>
-          <button @click="getgen(8)"><span>8°</span> <span>GEN</span></button>
-        </div>
-      </div>
-      <div class="nav-bar-p3">
+    <div v-else class="normal-navbar">
+      <div class="nav-bar-p1-l"></div>
+      <div class="nav-bar-p1">
+        <img id="pokeball" src="../../assets/images/PokeBall.svg" alt="">
       </div>
     </div>
   </div>
@@ -38,6 +48,10 @@ export default{
     },
     mustShow() {
       return this.currentRouteName != 'Index' && this.currentRouteName != 'Cadastro'
+    },
+    navType(){
+      if(this.currentRouteName == 'Pokemons') return true
+      else return false
     }
   },methods: {
     getgen(gen){
@@ -116,6 +130,10 @@ export default{
     position: absolute;
     top: 0px;
     left: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     margin: 0;
     padding: 0;
@@ -226,5 +244,12 @@ export default{
     padding-left: 5px;
     color: white;
     font-size: 11px;
+  }
+
+  .nav-bar-p1 #pokeball {
+    margin-left: 20px;
+
+    width: auto;
+    height: 45px;
   }
 </style>

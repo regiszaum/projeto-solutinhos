@@ -1,17 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/screens/TelaLogin.vue'
 import TelaEditarUsuario from '../components/screens/TelaEditarUsuario.vue'
-import TelaTimeline from '../components/screens/TelaTimeline.vue'
+import TelaPerfil from '../components/screens/TelaPerfil.vue'
 import Cadastro from '../components/screens/TelaCadastroUsuario.vue'
 import Pokemons from '../components/screens/Pokemons.vue'
-
-import store from '@/store'
 
 const routes = [
     {
       path: '/',
-      name: 'TimeLine',
-      component: TelaTimeline,
+      name: 'Profile',
+      component: TelaPerfil,
       meta: {
         public: false
       }

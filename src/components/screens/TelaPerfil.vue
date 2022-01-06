@@ -1,7 +1,6 @@
 <template>
   <div>
-    <ProfileCatalog :username="this.usuario.nome"/>
-    <Contacts/>
+
     <div class="content">
 
       <div v-for="el in array" :key="el" class="box">
