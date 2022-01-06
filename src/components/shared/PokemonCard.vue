@@ -40,7 +40,7 @@
     </div>
   </div>
   <div v-else>
-    loading
+    <div class="back-card-line" style="background-color: gray;"></div>
   </div>
 </template>
 
