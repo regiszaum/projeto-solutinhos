@@ -322,4 +322,19 @@ background: linear-gradient(0deg, rgba(168,167,122,1) 0%, rgba(252,239,239,1) 10
   .dragon{
     background: linear-gradient(180deg, rgba(252, 239, 239, 0.2) 0%, rgba(0, 0, 0, 0) 100%), #6F35FC;
   }
+
+.c-loader {
+  animation: is-rotating 1s infinite;
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #51d4db;
+  height: 50px;
+  width: 50px;
+}
+
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
 </style>

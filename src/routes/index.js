@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/screens/TelaLogin.vue'
 import TelaEditarUsuario from '../components/screens/TelaEditarUsuario.vue'
 import TelaTimeline from '../components/screens/TelaTimeline.vue'
-import Chat from '../components/screens/TelaChat.vue'
 import Cadastro from '../components/screens/TelaCadastroUsuario.vue'
 import Pokemons from '../components/screens/Pokemons.vue'
 
