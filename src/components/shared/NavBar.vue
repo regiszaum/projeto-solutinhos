@@ -11,7 +11,9 @@
 
       <div class="nav-bar-p1">
         <div class="nav-bar-p2">
-          <img id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
+          <router-link to="/">
+            <img draggable="false" id="pokedex1" src="../../assets/images/pokedex1.svg" alt="">
+          </router-link>
           <img id="pokedex2" src="../../assets/images/pokedex2.svg" alt="">
           <div id="generation-select-holder">
             <button @click="getgen(1)"><span>1°</span> <span>GEN</span></button>
@@ -32,7 +34,9 @@
     <div v-else class="normal-navbar">
       <div class="nav-bar-p1-l"></div>
       <div class="nav-bar-p1">
-        <img id="pokeball" src="../../assets/images/PokeBall.svg" alt="">
+        <router-link to="/pokemons">
+          <img draggable="false" id="pokeball" src="../../assets/images/PokeBall.svg" alt="">
+        </router-link>
       </div>
     </div>
   </div>

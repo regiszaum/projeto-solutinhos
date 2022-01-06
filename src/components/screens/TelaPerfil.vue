@@ -1,11 +1,15 @@
 <template>
-  <div>
-
-    <div class="content">
-
-      <div v-for="el in array" :key="el" class="box">
-
+  <div class="container">
+    <div class="side-bar">
+      <div class="user-data">
+        <div class="user-pic"></div>
+        <h1 class="user-name">username</h1>
       </div>
+
+      <button id="fav-pokemon">
+        <img id="start" src="@/assets/images/Star.svg" alt="">
+        <h1>Favorite Pokemons</h1>
+      </button>
     </div>
   </div>
 </template>
@@ -13,19 +17,14 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import ProfileCatalog from '../shared/ProfileCatalog.vue'
-import Contacts from '../shared/ContactsField.vue'
-
 export default{
   components: {
-    ProfileCatalog,
-    Contacts
+
   },
   created(){
   },
   data(){
     return{
-      array: [1,2,3,4,5,6,7,8,9,10],
       usuario: {
         nome: '',
         email: ''
@@ -42,26 +41,98 @@ export default{
 </script>
 
 <style scoped>
-  .content{
-    position: relative;
-    top: 100px;
-    left: 450px;
-   
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    width: 500px;
-    height: auto;
+    padding-top: 150px;
+    display: flex;
+    color: black;
   }
 
-  .box {
+  .side-bar{
+    position: fixed;
+    top: 50px;
+    left: 0px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 400px;
+    height: 100vh;
+
+    background-color: #E7E7E7;
+    box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .side-bar .user-data { 
+    margin-top: 50px;
+
+    width: 260px;
+    height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    background-color: #829D7C;
+    border-radius: 6px;
+    box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .side-bar .user-data .user-pic {
     margin-top: 20px;
 
-    width: 450px;
-    height: 600px;
+    width: 150px;
+    height: 150px;
 
-   border: solid 0.5px black;
+    background-color: white;
+
+    border-radius: 50%;
   }
+
+  .side-bar .user-data .user-name {
+    margin-top: 15px;
+    font-size: 26px;
+  }
+  
+  .side-bar #fav-pokemon {
+    margin-top: 40px;
+
+    width: 260px;
+    height: 70px;
+
+    display: flex;
+    align-items: center ;
+    justify-content: space-between;
+
+    background-color: #5A9BC4;
+    border-radius: 4px;
+    box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+
+  .side-bar #fav-pokemon #start{
+    margin-left: 10px;
+
+    width: auto;
+    height: 30px;
+  }
+
+  .side-bar #fav-pokemon:hover {
+    background-color: #407697;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+
+   .side-bar #fav-pokemon h1 {
+     margin-right: 25px;
+
+     font-size: 18px;
+   }
 </style>

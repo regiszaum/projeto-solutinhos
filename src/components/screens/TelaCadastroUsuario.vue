@@ -1,23 +1,21 @@
 <template>
   <div class="container">
-    <div class="content-wrapper">
-      <h1>Cadastro de Usuário</h1>
+    <div class="widget">
+      <h1>Faça seu cadastro <br> e <br> Embarque nessa aventura</h1>
 
-      <form @submit.prevent="cadastrar" class="formulario">
-        <div class="grid">
-          <label id="item1" for="">Nome</label>
-          <input id="item2" type="text" v-model="usuario.nome">
-        
-          <label id="item3" for="">E-mail</label>
-          <input id="item4" type="e-mail" v-model="usuario.email">
-        
-          <label id="item5" for="">Senha</label>
-          <input id="item6" type="password" v-model="usuario.senha">
-        
-          <button id="item7" type="submit">Cadastrar</button>
-        </div>
+      <form class="formulario">
+        <label for="">E-mail</label>
+        <input type="email">
+        <label for="">Senha</label>
+        <input type="password">
+
+        <button type="submit" >Cadastrar</button>
       </form>
     </div>
+
+    <img id="PokeBall" src="@/assets/images/PokeBall.svg" alt="PokeBall">
+    <img id="MegaBall" src="@/assets/images/MegaBall.svg" alt="MegaBall">
+    <img id="UltraBall" src="@/assets/images/UltraBall.svg" alt="UltraBall">
   </div>
 </template>
 
@@ -47,113 +45,109 @@ export default{
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
   * {
+    font-family: 'Poppins', sans-serif;
+    color: black;
+  }
+
+  .container {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .widget {
+    margin-top: 25px;
+    width: 538.49px;
+    height: 604px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    background: #FFFFFF;
+    box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+  }
+
+  .widget h1 {
+    margin-top: 50px;
+
+    width: 360px;
+    height: auto;
+
+    font-size: 26px;
+    line-height: 39px;
+    text-shadow: 4px 4px 7px rgba(0, 0, 0, 0.25);
+  }
+
+  .widget .formulario {
+    margin-top: 100px  ;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .widget .formulario label {
+    margin-left: 12px;
+
+    align-self: flex-start;
+
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+
+  .widget .formulario input{
+    padding: 10px;
+
+    width: 248px;
+    height: 40px;
+
+    border: 0.5px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+  }
+
+  .widget .formulario button {
+    margin-top: 25px;
+
+    width: 110.67px;
+    height: 40px;
+
+    background: #FF0000;
+    transition: 0.2s;
+    border-radius: 30px;
+    border: none;
+
     color: white;
   }
 
-  .container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .widget .formulario button:hover{
+    background: #e40808;
   }
 
-  .content-wrapper{
-    margin-top: 100px;
-
-    width: 400px;
-    height: 450px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 20px;
-
-    background: var(--verde-escuro);
+  #PokeBall{
+    position: absolute;
+    top: 2px;
+    right: 380px;
   }
 
-  .content-wrapper h1{
-    font-size: 20px;
-    font-weight: bold;
+  #MegaBall {
+    position: absolute;
+    bottom: 70px;
+    left: 380px;
   }
 
-  .formulario{
-    width: 100%;
-    height: 80%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .grid{
-    display: grid;
-    grid-template-columns: 30% 70% ;
-    grid-template-rows:  25% 25% 25% 25%;
-    grid-template-areas: 
-      'a b'
-      'c d'
-      'e f'
-      'g g'
-    ;
-
-    width: 80%;
-    height: 300px;
-  }
-
-  #item1{
-    grid-area: a;
-  }
-
-  #item3{
-    grid-area: c;
-  }
-
-  #item5{
-    grid-area: e;
-  }
-
-  #item1, #item3, #item5 {
-    margin-right: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  #item2, #item4, #item6{
-    display: flex;
-    align-self: center;
-    justify-content: center;
-
-    height: 30px;
-
-    border-radius: 20px;
-    border: none;
-
-    box-sizing: border-box;
-    padding: 8px 6px;
-    color: black;
-  }
-  
-  #item7{
-    grid-area: g;
-
-    align-self: center;
-    justify-self: center;
-
-    background-color: var(--verde);
-
-    width: 160px;
-    border: none;
-    border-radius: 20px;
-    box-sizing: border-box;
-    padding: 7px 2px; 
-  }
-
-  #item7:hover{
-    background-color: var(--verde-hover);
+  #UltraBall {
+    position: absolute;
+    bottom: 15px;
+    right: 380px;
   }
 </style>

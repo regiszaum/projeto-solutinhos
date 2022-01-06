@@ -47,13 +47,12 @@ export default {
   }
 
   .container {
-    display: flex;
+    display: flex;  
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     padding-top: 150px;
-    display: flex;
   }
 
   .pokemon-wrapper{
