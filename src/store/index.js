@@ -5,7 +5,11 @@ import pokeapi from '../http/pokeapi'
 
 const store = createStore({
   state: {
+    token:'',
     pokemons: [],
+    usuario: {
+
+    }
   }, // state é como se fosse o data
 
   mutations: {
@@ -19,11 +23,17 @@ const store = createStore({
       state.pokemons[index].name = pokemonD.name
       state.pokemons[index].types = pokemonD.types
       state.pokemons[index].stats =pokemonD.stats
+    },
+    SET_USER_DATA(state,{user}){
+      state.usuario.id = user.id
+      state.usuario.nome = user.nome
+      state.usuario.email = user.email
+      state.usuario.favpokemons = user.favpokemons
     }
   }, // é para alterar o estado
 
   actions: {
-    fetchPokemons({commit},{gen}){
+    fetchPokemons({commit},{gen,pokearray}){
       return new Promise((resolve,reject) => {
         if(gen === 'all'){
           pokeapi.get("pokemon?limit=250&offset=0")
@@ -109,7 +119,19 @@ const store = createStore({
         }
       })
     },
-    
+    setPokemonsById({commit},{pokearray}){
+      var pokemons_buffer = []
+
+      pokearray.forEach((id,i) => {
+        
+        var pokemon_transfer_obj = {
+          url: `https://pokeapi.co/api/v2/pokemon/${id}/`
+        }
+
+        pokemons_buffer[i] = pokemon_transfer_obj
+      })
+      commit('SET_POKEMONS',pokemons_buffer)
+    },
     fetchPokemonData({commit},{index,url}){
       return new Promise((resolve,reject) => {
         axios.get(url)
@@ -119,6 +141,7 @@ const store = createStore({
               types: res.data.types,
               stats: res.data.stats
             }
+            
             commit('SET_POKEMON_DATA',{index: index, pokemonD: pokemon_transfer_obj})
             resolve(res)
           }).catch(err => {
@@ -140,6 +163,20 @@ const store = createStore({
             reject()
         })
       })
+    },
+
+    fetchUserData({commit,state}){
+      return new Promise((resolve,reject) => {
+        http.get('userdata',{headers: {"Authorization" : `Bearer ${state.token}`}})
+        .then(res => {
+          commit('SET_USER_DATA',{user: res.data.usuario})
+          resolve()
+        })
+        .catch(err => {
+          console.log(err)
+          reject(err)
+        })
+      })
     }
   }, // vai te dar ações dentro de um determinado contexto, pode utilizar sua logica para utilizar a mutation para mudar o estado, ele faz o commit no estado. só usa action, quando precisa de promessa
   
@@ -154,6 +191,12 @@ const store = createStore({
       var target_pokemon = JSON.parse(JSON.stringify(state.pokemons.filter(pokemon => pokemon.name === name)))
       console.log(target_pokemon)
       return null
+    },
+    getUser: (state) => {
+      return state.usuario
+    },
+    getFavPokemons: (state) => {
+      return state.usuario.favpokemons
     }
   }
 })

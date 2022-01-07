@@ -3,19 +3,21 @@
     <div class="widget">
       <h1>Faça seu cadastro <br> e <br> Embarque nessa aventura</h1>
 
-      <form class="formulario">
+      <form @submit.prevent="cadastrar" class="formulario">
+        <label for="">Nome</label>
+        <input v-model="usuario.nome" type="text">
         <label for="">E-mail</label>
-        <input type="email">
+        <input v-model="usuario.email" type="email">
         <label for="">Senha</label>
-        <input type="password">
+        <input v-model="usuario.senha" type="password">
 
         <button type="submit" >Cadastrar</button>
       </form>
-    </div>
 
-    <img id="PokeBall" src="@/assets/images/PokeBall.svg" alt="PokeBall">
-    <img id="MegaBall" src="@/assets/images/MegaBall.svg" alt="MegaBall">
-    <img id="UltraBall" src="@/assets/images/UltraBall.svg" alt="UltraBall">
+      <img id="PokeBall" src="@/assets/images/PokeBall.svg" alt="PokeBall">
+      <img id="MegaBall" src="@/assets/images/MegaBall.svg" alt="MegaBall">
+      <img id="UltraBall" src="@/assets/images/UltraBall.svg" alt="UltraBall">
+    </div>
   </div>
 </template>
 
@@ -60,6 +62,8 @@ export default{
   }
 
   .widget {
+    position: relative;
+
     margin-top: 25px;
     width: 538.49px;
     height: 604px;
@@ -86,7 +90,7 @@ export default{
   }
 
   .widget .formulario {
-    margin-top: 100px  ;
+    margin-top: 50px  ;
 
     display: flex;
     flex-direction: column;
@@ -113,6 +117,8 @@ export default{
     border: 0.5px solid #000000;
     box-sizing: border-box;
     border-radius: 30px;
+
+    font-weight: 400;
   }
 
   .widget .formulario button {
@@ -135,19 +141,25 @@ export default{
 
   #PokeBall{
     position: absolute;
-    top: 2px;
-    right: 380px;
+    top: -20px;
+    right: -20px;
+
+    transform: rotate(5deg);
   }
 
   #MegaBall {
     position: absolute;
-    bottom: 70px;
-    left: 380px;
+    bottom: 30px;
+    left: -30px;
+
+    transform: rotate(-30deg);
   }
 
   #UltraBall {
     position: absolute;
-    bottom: 15px;
-    right: 380px;
+    bottom: -20px;
+    right: -20px;
+
+    transform: rotate(20deg);
   }
 </style>

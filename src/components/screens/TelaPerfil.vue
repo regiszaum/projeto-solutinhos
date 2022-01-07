@@ -1,39 +1,70 @@
 <template>
   <div class="container">
     <div class="side-bar">
-      <div class="user-data">
-        <div class="user-pic"></div>
-        <h1 class="user-name">username</h1>
+      <div class="user-img">
+        <img src="@/assets/images/moldura_pokedex.png" alt="">
       </div>
+
+      <div class="user-name">
+        <h1>{{this.getUser.nome}}</h1>
+      </div>
+      
 
       <button id="fav-pokemon">
         <img id="start" src="@/assets/images/Star.svg" alt="">
         <h1>Favorite Pokemons</h1>
       </button>
     </div>
+
+    <div v-if="isSeted" class="fav-pokemons">
+      <ul>
+        <li v-for="(pokemon, index) in getPokemons" :key="index">
+          <pokemon-card :pokemon_index="index" :url="pokemon.url"/>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions,mapGetters } from 'vuex'
+import PokemonCard from '../shared/PokemonCard.vue'
 
 export default{
-  components: {
-
+ components: {
+    'pokemon-card': PokemonCard
   },
   created(){
+    this.fetchUserData()
+    .then(() => {
+      //Limpar array de pokemons
+      this.$store.state.pokemons = []
+      //Definir urls dos pokemons favoritados 
+      this.setPokemonsById({pokearray: this.getFavPokemons})
+      this.isSeted = true
+    })
+    .catch(err => console.log(err))
   },
   data(){
     return{
+      isSeted: false,
       usuario: {
         nome: '',
         email: ''
       }
     }
   },
+  methods: {
+    ...mapActions([
+      'fetchUserData',
+      'setPokemonsById'
+    ])
+  },
   computed: {
     ...mapGetters([
-      'getUserById'
+      'getUser',
+      'getFavPokemons',
+      'getPokemons'
     ])
   }
 }
@@ -44,10 +75,10 @@ export default{
   .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
-    padding-top: 150px;
+    padding-top: 110px;
     display: flex;
     color: black;
   }
@@ -69,10 +100,12 @@ export default{
     box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
   }
 
-  .side-bar .user-data { 
+  .side-bar .user-img { 
+    position: relative;
+
     margin-top: 50px;
 
-    width: 260px;
+    width: 300px;
     height: 240px;
 
     display: flex;
@@ -80,32 +113,36 @@ export default{
     align-items: center;
     justify-content: flex-start;
     
-    background-color: #829D7C;
+    background-color: white;
     border-radius: 6px;
     box-shadow: 2px 4px 20px 2px rgba(0, 0, 0, 0.25);
   }
 
-  .side-bar .user-data .user-pic {
-    margin-top: 20px;
-
-    width: 150px;
-    height: 150px;
-
-    background-color: white;
-
-    border-radius: 50%;
+  .side-bar .user-img {
+    position: absolute;
   }
 
-  .side-bar .user-data .user-name {
-    margin-top: 15px;
-    font-size: 26px;
+  .side-bar .user-name {
+    margin-top: 310px;
+
+    width: 260px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .side-bar .user-name h1{
+    color: black;
+    font-size: 20px;
   }
   
   .side-bar #fav-pokemon {
-    margin-top: 40px;
+    margin-top: 50px;
 
-    width: 260px;
-    height: 70px;
+    width: 280px;
+    height: 50px;
 
     display: flex;
     align-items: center ;
@@ -121,7 +158,7 @@ export default{
     margin-left: 10px;
 
     width: auto;
-    height: 30px;
+    height: 25px;
   }
 
   .side-bar #fav-pokemon:hover {
@@ -130,9 +167,26 @@ export default{
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }
 
-   .side-bar #fav-pokemon h1 {
-     margin-right: 25px;
+  .side-bar #fav-pokemon h1 {
+    margin-right: 50px;
+    font-size: 18px;
+  }
 
-     font-size: 18px;
-   }
+  .fav-pokemons {
+    margin-right: 30px;
+    margin-left: 460px;
+
+    width: 60vw;
+    height: auto;
+  }
+
+  .fav-pokemons ul {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

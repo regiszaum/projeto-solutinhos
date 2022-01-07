@@ -51,7 +51,7 @@ export default{
       return this.$route.name;
     },
     mustShow() {
-      return this.currentRouteName != 'Index' && this.currentRouteName != 'Cadastro'
+      return this.currentRouteName != 'Index' && this.currentRouteName != 'Cadastro' && this.currentRouteName != 'Clima'
     },
     navType(){
       if(this.currentRouteName == 'Pokemons') return true

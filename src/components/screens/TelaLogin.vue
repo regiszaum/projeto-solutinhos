@@ -44,7 +44,7 @@ export default {
         login(){
             this.sendLoginData(this.usuario)
                 .then(res => {
-                    this.$router.push({name: "TimeLine"})
+                    this.$router.push({name: "Profile"})
                 })
                 .catch(err => {})  
         }
