@@ -4,6 +4,7 @@ import TelaEditarUsuario from '../components/screens/TelaEditarUsuario.vue'
 import TelaPerfil from '../components/screens/TelaPerfil.vue'
 import Cadastro from '../components/screens/TelaCadastroUsuario.vue'
 import Pokemons from '../components/screens/Pokemons.vue'
+import Clima from '../components/screens/Clima.vue'
 
 const routes = [
     {
