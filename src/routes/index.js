@@ -45,7 +45,15 @@ const routes = [
       meta: {
         public: false
       }
-    }
+    },
+    {
+      path: '/clima',
+      name: 'Clima',
+      component: Clima,
+      meta: {
+        public: true
+      }
+    },
   ]
   
 const router = createRouter({
