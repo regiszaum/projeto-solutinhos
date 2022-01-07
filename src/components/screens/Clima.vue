@@ -79,7 +79,7 @@ export default {
   transition: 0.4s;
 }
 
-#clima-component.quente {
+#clima-component .quente {
   background-image: url("../../assets/images/warm-bg.jpg");
 }
 
@@ -96,13 +96,17 @@ main {
 .container-pesquisa {
   width: 100%;
   margin-bottom: 30px;
+  margin-top: 10%;
+  width: 75%;
 }
 
 .container-pesquisa .barra-pesquisa {
-  display: block;
-  width: 100%;
+  display: flex;
+  width: 50%;
   padding: 15px;
-
+  margin-left: 40%;
+  justify-content: center;
+  align-self: center;
   color: #313131;
   font-size: 20px;
   appearance: none;
