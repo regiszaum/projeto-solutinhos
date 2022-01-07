@@ -17,8 +17,9 @@
               <div class="data"> {{ dataBuilder() }} </div>
           </div>
           <div class="clima-box">
-              <div class="temperatura"> {{ Math.round(clima.main.temp) }} </div>
+              <div class="temperatura"> {{ Math.round(clima.main.temp) }}ºC</div>
               <div class="clima"> {{ clima.weather[0].main }} </div>
+              <div class="clima"> {{ clima.weather[0].description }} </div>
           </div>
       </div>
     </main>
@@ -39,7 +40,7 @@ export default {
   methods: {
       fetchClima (e) {
           if (e.key == "Enter") {
-              fetch(`${this.url_base}weather?q=${this.busca}&units=metric&APPID=${this.api_key}`)
+              fetch(`${this.url_base}weather?q=${this.busca}&lang=pt_br&units=metric&APPID=${this.api_key}`)
               .then(res => {
                   return res.json();
               }).then(this.resultadoFinal);
@@ -115,14 +116,14 @@ main {
   background: none;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px 16px 0px 16px;
+  border-radius: 15px;
   transition: 0.4s;
 }
 
 .container-pesquisa .barra-pesquisa:focus {
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
   background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 25px;
 }
 
 .box-localizacao .localizacao {
@@ -166,5 +167,6 @@ main {
     font-weight: 700;
     font-style: italic;
     text-shadow: 3px 6px rgba(0, 0, 0, 0.25);
+    text-transform: capitalize;
 }
 </style>
