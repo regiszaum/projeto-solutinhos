@@ -27,6 +27,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Clima",
   data() {
@@ -37,6 +38,7 @@ export default {
       clima: {}
     };
   },
+  
   methods: {
       fetchClima (e) {
           if (e.key == "Enter") {
