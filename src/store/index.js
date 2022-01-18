@@ -7,9 +7,7 @@ const store = createStore({
   state: {
     token:'',
     pokemons: [],
-    usuario: {
-
-    }
+    usuario: {}
   }, // state é como se fosse o data
 
   mutations: {
@@ -22,13 +20,24 @@ const store = createStore({
     SET_POKEMON_DATA(state,{index,pokemonD}){
       state.pokemons[index].name = pokemonD.name
       state.pokemons[index].types = pokemonD.types
-      state.pokemons[index].stats =pokemonD.stats
+      state.pokemons[index].stats = pokemonD.stats
+      state.pokemons[index].stats = pokemonD.id
     },
     SET_USER_DATA(state,{user}){
       state.usuario.id = user.id
       state.usuario.nome = user.nome
       state.usuario.email = user.email
       state.usuario.favpokemons = user.favpokemons
+    },
+    CLEAN_TOEKEN(state) {
+      state.token = null;
+    },
+    REMOVE_FAV_POKEMON(state,id){
+      const index = state.usuario.favpokemons.indexOf(id)
+      state.usuario.favpokemons.splice(index,1)
+    },
+    ADD_FAV_POKEMON(state,id) {
+      state.usuario.favpokemons.push(id)
     }
   }, // é para alterar o estado
 
@@ -119,6 +128,7 @@ const store = createStore({
         }
       })
     },
+
     setPokemonsById({commit},{pokearray}){
       var pokemons_buffer = []
 
@@ -132,6 +142,7 @@ const store = createStore({
       })
       commit('SET_POKEMONS',pokemons_buffer)
     },
+
     fetchPokemonData({commit},{index,url}){
       return new Promise((resolve,reject) => {
         axios.get(url)
@@ -139,7 +150,8 @@ const store = createStore({
             var pokemon_transfer_obj = {
               name: res.data.name,
               types: res.data.types,
-              stats: res.data.stats
+              stats: res.data.stats,
+              id: res.data.id
             }
             
             commit('SET_POKEMON_DATA',{index: index, pokemonD: pokemon_transfer_obj})

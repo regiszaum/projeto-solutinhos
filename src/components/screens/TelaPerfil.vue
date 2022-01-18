@@ -11,7 +11,7 @@
       
 
       <button id="fav-pokemon">
-        <img id="start" src="@/assets/images/Star.svg" alt="">
+        <img id="start" src="@/assets/images/StarY.svg" alt="">
         <h1>Favorite Pokemons</h1>
       </button>
     </div>

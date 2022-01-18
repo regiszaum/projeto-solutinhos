@@ -37,13 +37,16 @@
         <router-link to="/pokemons">
           <img draggable="false" id="pokeball" src="../../assets/images/PokeBall.svg" alt="">
         </router-link>
+
+        <a @click="logout" style="margin-right: 10px; cursor: pointer;">LogOut</a>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
 export default{
   computed: {
@@ -62,8 +65,16 @@ export default{
       console.log("Requisição da " + gen + " geração")
       this.fetchPokemons({gen: gen})
     },
+    logout() {
+      this.CLEAN_TOEKEN()
+      this.$router.push({name: "Index"})
+    }
+    ,
     ...mapActions([
       'fetchPokemons',
+    ]),
+    ...mapMutations([
+      'CLEAN_TOEKEN'
     ])
   }
 }
@@ -78,8 +89,11 @@ export default{
   .nav-bar {
     width: 100%;
     position: fixed;
-
     z-index: 1;
+  }
+
+  .nav-bar {
+    color: black;
   }
 
   .nav-bar-p1-l {
@@ -248,6 +262,14 @@ export default{
     padding-left: 5px;
     color: white;
     font-size: 11px;
+  }
+
+  .normal-navbar {
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .nav-bar-p1 #pokeball {

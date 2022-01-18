@@ -1,5 +1,11 @@
 <template>
   <div v-if="isFetched" class="back-card-line">
+
+    <div @click="fav(pokemon.id)" class="fav-container">
+      <img v-if="isFavPokemon(pokemon.id) || justfavd" src="../../assets/images/StarY.svg">
+      <img v-else src="../../assets/images/StarG.svg">
+    </div>
+
     <div :class="['card-fill', pokemon.types[0].type.name]">
       <div class="name-n-power">
         <h1>{{ pokemonNameUpperCase(pokemon.name) }}</h1>
@@ -51,7 +57,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
+import http from '@/http'
 
 export default {
   props: {
@@ -71,6 +78,7 @@ export default {
     })
       .then((res) => {
         this.pokemon.name = res.data.name;
+        this.pokemon.id = res.data.id;
 
         this.pokemon.type = res.data.types[0].type.name;
         this.pokemon.types = res.data.types;
@@ -90,10 +98,12 @@ export default {
   data() {
     return {
       isFetched: false,
+      justfavd: false,
 
       pokemon: {
         img: "",
         name: "",
+        id: -1,
         types: [],
         type: "",
         stats: {
@@ -108,14 +118,35 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getPokemonTypes"]),
+    ...mapGetters([
+      "getPokemonTypes",
+      'getFavPokemons'
+      ])
   },
   methods: {
     ...mapActions(["fetchPokemonData"]),
+    ...mapMutations([
+        'REMOVE_FAV_POKEMON',
+        'ADD_FAV_POKEMON'
+        ]),
 
     pokemonNameUpperCase(name) {
       return name.charAt(0).toUpperCase() + name.slice(1);
     },
+    async fav(id) {
+      if(!this.isFavPokemon(id)){
+        await http.put('/favpokemon/add',{id: id},{headers: {"Authorization" : `Bearer ${this.$store.state.token}`}})
+        this.ADD_FAV_POKEMON(id)
+        this.justfavd = true
+      }else {
+        await http.put('/favpokemon/remove',{id: id},{headers: {"Authorization" : `Bearer ${this.$store.state.token}`}})
+        this.REMOVE_FAV_POKEMON(id)
+        this.justfavd = false
+      }
+    },
+    isFavPokemon(id){
+      return this.getFavPokemons.includes(id)
+    }
   },
 };
 </script>
@@ -130,7 +161,9 @@ export default {
 }
 
 .back-card-line {
-  margin: 10px;
+  position: relative;
+
+  margin: 25px;
   width: 220px;
   height: 280px;
 
@@ -143,6 +176,33 @@ export default {
 
   border-radius: 4px;
   border: 1.5px solid #000000;
+}
+
+.fav-container {
+  position: absolute;
+  top: -31px;
+  left: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 28px;
+
+  border-radius: 5px 5px 0px 0px;
+  border: .5px solid #000000;
+  box-shadow: 2px -2px 40px rgba(0, 0, 0, 0.15);
+  background-color: #FFF;
+
+  cursor: pointer;
+}
+
+.fav-container img {
+  margin-bottom: 2px;
+
+  width: auto;
+  height: 20px;
 }
 
 .card-fill {
